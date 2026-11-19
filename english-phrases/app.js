@@ -155,6 +155,7 @@
     if (c?.s === 'review') badge = `✅ 確認 ${c.stage + 1}/3`;
     else if (c?.s === 'learning') badge = '🔁 もう一度';
     $('fDue').textContent = badge;
+    $('fIllust').innerHTML = window.drawScene ? window.drawScene(p) : '';
     $('fJa').textContent = p.ja;
     $('fNote').textContent = `📍 ${p.note}`;
     $('bEn').textContent = p.en;

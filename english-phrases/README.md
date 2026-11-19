@@ -29,3 +29,10 @@ iPhoneのChromeで開き、共有メニューの「ホーム画面に追加」�
 ```sh
 cd english-phrases && python3 -m http.server 8000
 ```
+
+### 場面イラスト
+カード表面のイラストは `illust.js` がSVGで描きます。
+- 背景と相手役：`scene`（会議・メール・電話・交渉・雑談・意見を言う・聞き返す・空港・ホテル・レストラン・トラブル・自己紹介・経歴説明・志望動機・逆質問）
+- 主人公の表情：`mood`（`smile` / `happy` / `think` / `surprised` / `sorry` / `worried` / `confident`）
+- 吹き出しの絵文字：`icon`
+- 自分で用意した画像を使う場合は `"image": "images/xxx.png"` を指定（イラストより優先）

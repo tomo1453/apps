@@ -1,6 +1,6 @@
 // オフライン対応：アプリ本体はキャッシュ優先、フレーズデータはネットワーク優先
-const CACHE = 'english-phrases-v1';
-const SHELL = ['./', './index.html', './style.css', './app.js', './phrases.json', './manifest.json',
+const CACHE = 'english-phrases-v2';
+const SHELL = ['./', './index.html', './style.css', './app.js', './illust.js', './phrases.json', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {

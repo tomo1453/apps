@@ -1,1111 +1,131 @@
 {
  "version": 1,
  "categories": [
-  {
-   "id": "work",
-   "name": "仕事・会議",
-   "emoji": "💼",
-   "color": "#4F8CFF"
-  },
-  {
-   "id": "lesson",
-   "name": "英会話レッスン",
-   "emoji": "💬",
-   "color": "#FF7AB6"
-  },
-  {
-   "id": "travel",
-   "name": "海外旅行",
-   "emoji": "✈️",
-   "color": "#22C7A9"
-  },
-  {
-   "id": "interview",
-   "name": "転職面接",
-   "emoji": "🎯",
-   "color": "#FFA92E"
-  }
+  {"id": "work", "name": "仕事・会議", "emoji": "💼", "color": "#4F8CFF"},
+  {"id": "lesson", "name": "英会話レッスン", "emoji": "💬", "color": "#FF7AB6"},
+  {"id": "travel", "name": "海外旅行", "emoji": "✈️", "color": "#22C7A9"},
+  {"id": "interview", "name": "転職面接", "emoji": "🎯", "color": "#FFA92E"}
  ],
  "phrases": [
-  {
-   "id": "work-001",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "始めましょうか。",
-   "note": "会議の冒頭で",
-   "en": "Shall we get started?",
-   "alt": "Let's get the ball rolling."
-  },
-  {
-   "id": "work-002",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "今日の議題を確認させてください。",
-   "note": "会議の最初にアジェンダ確認",
-   "en": "Let me go over today's agenda.",
-   "alt": "Let's run through the agenda first."
-  },
-  {
-   "id": "work-003",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "ちょっと付け加えてもいいですか？",
-   "note": "発言に割り込みたいとき",
-   "en": "Can I add something here?",
-   "alt": "If I could just jump in for a second..."
-  },
-  {
-   "id": "work-004",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "要点をまとめると…",
-   "note": "議論を整理する",
-   "en": "To sum up, ...",
-   "alt": "In a nutshell, ..."
-  },
-  {
-   "id": "work-005",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "その件は後で話しましょう。",
-   "note": "脱線した話題を戻す",
-   "en": "Let's come back to that later.",
-   "alt": "Let's park that for now."
-  },
-  {
-   "id": "work-006",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "認識を合わせておきたいです。",
-   "note": "全員の理解をそろえる",
-   "en": "I want to make sure we're on the same page.",
-   "alt": "Let's make sure we're all aligned."
-  },
-  {
-   "id": "work-007",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "次のステップは何ですか？",
-   "note": "会議の締めくくりに",
-   "en": "What are the next steps?",
-   "alt": "Where do we go from here?"
-  },
-  {
-   "id": "work-008",
-   "cat": "work",
-   "scene": "会議",
-   "ja": "時間になったので終わりにしましょう。",
-   "note": "会議を締める",
-   "en": "We're out of time, so let's wrap up.",
-   "alt": "Let's call it a day."
-  },
-  {
-   "id": "work-009",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "ご連絡ありがとうございます。",
-   "note": "返信の書き出し",
-   "en": "Thank you for reaching out.",
-   "alt": "Thanks for getting in touch."
-  },
-  {
-   "id": "work-010",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "資料を添付します。",
-   "note": "ファイルを送るとき",
-   "en": "Please find the document attached.",
-   "alt": "I've attached the file for your reference."
-  },
-  {
-   "id": "work-011",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "念のため確認です。",
-   "note": "リマインドを送る",
-   "en": "Just a quick reminder.",
-   "alt": "Just following up on this."
-  },
-  {
-   "id": "work-012",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "ご都合のよい日時を教えてください。",
-   "note": "日程調整",
-   "en": "Please let me know what time works for you.",
-   "alt": "When would be a good time for you?"
-  },
-  {
-   "id": "work-013",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "返信が遅くなりすみません。",
-   "note": "遅れて返信するとき",
-   "en": "Sorry for the late reply.",
-   "alt": "Apologies for the delayed response."
-  },
-  {
-   "id": "work-014",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "ご不明点があればお知らせください。",
-   "note": "メールの締め",
-   "en": "Please let me know if you have any questions.",
-   "alt": "Feel free to reach out if anything is unclear."
-  },
-  {
-   "id": "work-015",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "お返事お待ちしています。",
-   "note": "返事を促す締めの一文",
-   "en": "I look forward to hearing from you.",
-   "alt": "Looking forward to your reply."
-  },
-  {
-   "id": "work-016",
-   "cat": "work",
-   "scene": "メール",
-   "ja": "〇〇さんをCCに入れています。",
-   "note": "関係者を共有",
-   "en": "I've cc'd Mike on this email.",
-   "alt": "I'm looping in Mike."
-  },
-  {
-   "id": "work-017",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "〇〇さんはいらっしゃいますか？",
-   "note": "電話で取り次ぎを頼む",
-   "en": "May I speak to Ms. Smith?",
-   "alt": "Could you put me through to Ms. Smith?"
-  },
-  {
-   "id": "work-018",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "少々お待ちください。",
-   "note": "電話を保留にする",
-   "en": "Could you hold on a moment?",
-   "alt": "One moment, please."
-  },
-  {
-   "id": "work-019",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "折り返しお電話します。",
-   "note": "すぐ対応できないとき",
-   "en": "I'll call you back.",
-   "alt": "Let me get back to you shortly."
-  },
-  {
-   "id": "work-020",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "音声が途切れています。",
-   "note": "電話・オンライン会議で",
-   "en": "You're breaking up.",
-   "alt": "The connection is a bit choppy."
-  },
-  {
-   "id": "work-021",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "伝言をお願いできますか？",
-   "note": "相手が不在のとき",
-   "en": "Could I leave a message?",
-   "alt": "Could you take a message?"
-  },
-  {
-   "id": "work-022",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "もう一度お名前をお願いします。",
-   "note": "名前を聞き取れなかった",
-   "en": "Could I have your name again, please?",
-   "alt": "Sorry, who am I speaking with?"
-  },
-  {
-   "id": "work-023",
-   "cat": "work",
-   "scene": "電話",
-   "ja": "お電話ありがとうございました。",
-   "note": "電話を切る前に",
-   "en": "Thanks for calling.",
-   "alt": "Thank you for your time on the phone."
-  },
-  {
-   "id": "work-024",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "妥協点を見つけましょう。",
-   "note": "交渉で歩み寄りを提案",
-   "en": "Let's find a middle ground.",
-   "alt": "Can we meet halfway?"
-  },
-  {
-   "id": "work-025",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "それは少し難しいです。",
-   "note": "やんわり断る",
-   "en": "That might be a bit difficult for us.",
-   "alt": "I'm afraid that's a little tough."
-  },
-  {
-   "id": "work-026",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "検討させてください。",
-   "note": "即答を避ける",
-   "en": "Let me think it over.",
-   "alt": "I'll need some time to consider it."
-  },
-  {
-   "id": "work-027",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "ここが譲れない点です。",
-   "note": "絶対条件を伝える",
-   "en": "This is a deal-breaker for us.",
-   "alt": "This point is non-negotiable."
-  },
-  {
-   "id": "work-028",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "値引きは可能ですか？",
-   "note": "価格交渉",
-   "en": "Is there any room for a discount?",
-   "alt": "Is the price negotiable?"
-  },
-  {
-   "id": "work-029",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "それなら合意できます。",
-   "note": "条件付きで合意",
-   "en": "We can agree to that.",
-   "alt": "That works for us."
-  },
-  {
-   "id": "work-030",
-   "cat": "work",
-   "scene": "交渉",
-   "ja": "社内で確認してから返事します。",
-   "note": "持ち帰って検討",
-   "en": "I'll check with my team and get back to you.",
-   "alt": "Let me run it by my manager first."
-  },
-  {
-   "id": "lesson-001",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "最近どう？",
-   "note": "あいさつ代わりに",
-   "en": "How have you been?",
-   "alt": "What have you been up to?"
-  },
-  {
-   "id": "lesson-002",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "週末は何をしましたか？",
-   "note": "月曜日のレッスンで",
-   "en": "What did you do over the weekend?",
-   "alt": "How was your weekend?"
-  },
-  {
-   "id": "lesson-003",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "まあまあです。",
-   "note": "調子を聞かれて",
-   "en": "Not bad.",
-   "alt": "Can't complain."
-  },
-  {
-   "id": "lesson-004",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "それはいいですね！",
-   "note": "相手の話に反応する",
-   "en": "That sounds great!",
-   "alt": "How nice!"
-  },
-  {
-   "id": "lesson-005",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "それは大変でしたね。",
-   "note": "相手の苦労話に共感",
-   "en": "That must have been tough.",
-   "alt": "Sorry to hear that."
-  },
-  {
-   "id": "lesson-006",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "実は最近〇〇にハマっています。",
-   "note": "趣味の話題",
-   "en": "I've been really into yoga lately.",
-   "alt": "I'm hooked on yoga these days."
-  },
-  {
-   "id": "lesson-007",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "ところで…",
-   "note": "話題を変える",
-   "en": "By the way, ...",
-   "alt": "Speaking of which, ..."
-  },
-  {
-   "id": "lesson-008",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "わかる！",
-   "note": "強く共感する",
-   "en": "I know what you mean.",
-   "alt": "Tell me about it."
-  },
-  {
-   "id": "lesson-009",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "今日はちょっと疲れています。",
-   "note": "体調や気分を伝える",
-   "en": "I'm a little tired today.",
-   "alt": "I'm feeling a bit worn out today."
-  },
-  {
-   "id": "lesson-010",
-   "cat": "lesson",
-   "scene": "雑談",
-   "ja": "また来週！",
-   "note": "レッスンの終わりに",
-   "en": "See you next week!",
-   "alt": "Talk to you next week!"
-  },
-  {
-   "id": "lesson-011",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "個人的には…だと思います。",
-   "note": "自分の意見を切り出す",
-   "en": "Personally, I think ...",
-   "alt": "In my opinion, ..."
-  },
-  {
-   "id": "lesson-012",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "完全に同意します。",
-   "note": "賛成を伝える",
-   "en": "I totally agree.",
-   "alt": "I couldn't agree more."
-  },
-  {
-   "id": "lesson-013",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "そうとも言えますが…",
-   "note": "部分的に反対する",
-   "en": "I see your point, but ...",
-   "alt": "That's true, but ..."
-  },
-  {
-   "id": "lesson-014",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "私はそうは思いません。",
-   "note": "はっきり反対する",
-   "en": "I don't think so.",
-   "alt": "I'm not sure I agree."
-  },
-  {
-   "id": "lesson-015",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "場合によります。",
-   "note": "一概に言えないとき",
-   "en": "It depends.",
-   "alt": "It depends on the situation."
-  },
-  {
-   "id": "lesson-016",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "例えば…",
-   "note": "具体例を出す",
-   "en": "For example, ...",
-   "alt": "For instance, ..."
-  },
-  {
-   "id": "lesson-017",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "理由は2つあります。",
-   "note": "根拠を説明する",
-   "en": "There are two reasons.",
-   "alt": "I have two reasons for that."
-  },
-  {
-   "id": "lesson-018",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "考えたこともなかったです。",
-   "note": "新しい視点に驚く",
-   "en": "I've never thought about it that way.",
-   "alt": "That's a new way of looking at it."
-  },
-  {
-   "id": "lesson-019",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "どちらかというと…派です。",
-   "note": "好みを伝える",
-   "en": "I'd rather go with ...",
-   "alt": "I'm more of a ... person."
-  },
-  {
-   "id": "lesson-020",
-   "cat": "lesson",
-   "scene": "意見を言う",
-   "ja": "うまく言えないんですが…",
-   "note": "言葉に詰まったとき",
-   "en": "I'm not sure how to put this, but ...",
-   "alt": "How should I say this..."
-  },
-  {
-   "id": "lesson-021",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "もう一度言ってもらえますか？",
-   "note": "聞き取れなかったとき",
-   "en": "Could you say that again?",
-   "alt": "Sorry, could you repeat that?"
-  },
-  {
-   "id": "lesson-022",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "もう少しゆっくり話してもらえますか？",
-   "note": "早くて聞き取れない",
-   "en": "Could you speak a little more slowly?",
-   "alt": "Could you slow down a bit?"
-  },
-  {
-   "id": "lesson-023",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "それはどういう意味ですか？",
-   "note": "意味がわからない",
-   "en": "What do you mean by that?",
-   "alt": "What does that mean?"
-  },
-  {
-   "id": "lesson-024",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "つまり…ということですか？",
-   "note": "理解を確認する",
-   "en": "So you mean ...?",
-   "alt": "Are you saying that ...?"
-  },
-  {
-   "id": "lesson-025",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "〇〇はどう綴りますか？",
-   "note": "単語のつづりを聞く",
-   "en": "How do you spell that?",
-   "alt": "Could you spell that for me?"
-  },
-  {
-   "id": "lesson-026",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "英語で何と言いますか？",
-   "note": "言い方がわからない",
-   "en": "How do you say this in English?",
-   "alt": "What's the English word for this?"
-  },
-  {
-   "id": "lesson-027",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "例を挙げてもらえますか？",
-   "note": "具体例がほしい",
-   "en": "Could you give me an example?",
-   "alt": "Can you show me an example?"
-  },
-  {
-   "id": "lesson-028",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "ちょっと考えさせてください。",
-   "note": "答えるまで時間がほしい",
-   "en": "Let me think for a moment.",
-   "alt": "Give me a second."
-  },
-  {
-   "id": "lesson-029",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "今の言い方で合っていますか？",
-   "note": "自分の英語を確認",
-   "en": "Did I say that correctly?",
-   "alt": "Is that the right way to say it?"
-  },
-  {
-   "id": "lesson-030",
-   "cat": "lesson",
-   "scene": "聞き返す",
-   "ja": "もっと自然な言い方はありますか？",
-   "note": "表現を磨きたい",
-   "en": "Is there a more natural way to say it?",
-   "alt": "How would a native speaker say it?"
-  },
-  {
-   "id": "travel-001",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "通路側の席をお願いします。",
-   "note": "チェックインカウンターで",
-   "en": "I'd like an aisle seat, please.",
-   "alt": "Can I have an aisle seat?"
-  },
-  {
-   "id": "travel-002",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "観光です。",
-   "note": "入国審査で目的を聞かれて",
-   "en": "I'm here for sightseeing.",
-   "alt": "I'm here on vacation."
-  },
-  {
-   "id": "travel-003",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "1週間滞在します。",
-   "note": "入国審査で期間を聞かれて",
-   "en": "I'm staying for a week.",
-   "alt": "I'll be here for one week."
-  },
-  {
-   "id": "travel-004",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "荷物が出てきません。",
-   "note": "手荷物受取所で",
-   "en": "My baggage hasn't come out.",
-   "alt": "I can't find my luggage."
-  },
-  {
-   "id": "travel-005",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "乗り継ぎはどこですか？",
-   "note": "トランジットで",
-   "en": "Where do I go for connecting flights?",
-   "alt": "Where is the transfer desk?"
-  },
-  {
-   "id": "travel-006",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "何番ゲートですか？",
-   "note": "搭乗口を確認",
-   "en": "Which gate is it?",
-   "alt": "What gate does this flight leave from?"
-  },
-  {
-   "id": "travel-007",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "申告するものはありません。",
-   "note": "税関で",
-   "en": "I have nothing to declare.",
-   "alt": "Nothing to declare."
-  },
-  {
-   "id": "travel-008",
-   "cat": "travel",
-   "scene": "空港",
-   "ja": "市内へはどう行けばいいですか？",
-   "note": "空港から移動するとき",
-   "en": "How can I get to downtown?",
-   "alt": "What's the best way to get to the city center?"
-  },
-  {
-   "id": "travel-009",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "チェックインをお願いします。予約しています。",
-   "note": "フロントで",
-   "en": "I'd like to check in. I have a reservation.",
-   "alt": "Hi, I'm checking in. The reservation is under Tanaka."
-  },
-  {
-   "id": "travel-010",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "荷物を預かってもらえますか？",
-   "note": "チェックイン前・アウト後",
-   "en": "Could you keep my luggage?",
-   "alt": "Can I leave my bags here?"
-  },
-  {
-   "id": "travel-011",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "Wi-Fiのパスワードは何ですか？",
-   "note": "部屋でネットを使いたい",
-   "en": "What's the Wi-Fi password?",
-   "alt": "Could I get the Wi-Fi password?"
-  },
-  {
-   "id": "travel-012",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "朝食は何時からですか？",
-   "note": "朝食の時間を確認",
-   "en": "What time is breakfast served?",
-   "alt": "When does breakfast start?"
-  },
-  {
-   "id": "travel-013",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "お湯が出ません。",
-   "note": "部屋のトラブル",
-   "en": "There's no hot water.",
-   "alt": "The hot water isn't working."
-  },
-  {
-   "id": "travel-014",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "タオルを追加でもらえますか？",
-   "note": "アメニティを頼む",
-   "en": "Could I get some extra towels?",
-   "alt": "Can you bring more towels, please?"
-  },
-  {
-   "id": "travel-015",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "レイトチェックアウトはできますか？",
-   "note": "遅く出たいとき",
-   "en": "Is late checkout available?",
-   "alt": "Could I check out a little later?"
-  },
-  {
-   "id": "travel-016",
-   "cat": "travel",
-   "scene": "ホテル",
-   "ja": "タクシーを呼んでもらえますか？",
-   "note": "フロントで頼む",
-   "en": "Could you call a taxi for me?",
-   "alt": "Can you get me a cab?"
-  },
-  {
-   "id": "travel-017",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "2名です。",
-   "note": "入店時に人数を伝える",
-   "en": "A table for two, please.",
-   "alt": "Two, please."
-  },
-  {
-   "id": "travel-018",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "おすすめは何ですか？",
-   "note": "メニューに迷ったとき",
-   "en": "What do you recommend?",
-   "alt": "What's popular here?"
-  },
-  {
-   "id": "travel-019",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "これをください。",
-   "note": "メニューを指さして注文",
-   "en": "I'll have this one.",
-   "alt": "Can I get this, please?"
-  },
-  {
-   "id": "travel-020",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "エビアレルギーがあります。",
-   "note": "アレルギーを伝える",
-   "en": "I'm allergic to shrimp.",
-   "alt": "I can't eat shrimp. I have an allergy."
-  },
-  {
-   "id": "travel-021",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "お会計をお願いします。",
-   "note": "支払いをするとき",
-   "en": "Can I have the check, please?",
-   "alt": "Could we get the bill?"
-  },
-  {
-   "id": "travel-022",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "持ち帰りにできますか？",
-   "note": "残りを持ち帰りたい",
-   "en": "Can I get this to go?",
-   "alt": "Could I have a box for the leftovers?"
-  },
-  {
-   "id": "travel-023",
-   "cat": "travel",
-   "scene": "レストラン",
-   "ja": "カードで払えますか？",
-   "note": "支払い方法を確認",
-   "en": "Do you take credit cards?",
-   "alt": "Can I pay by card?"
-  },
-  {
-   "id": "travel-024",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "道に迷いました。",
-   "note": "現在地がわからない",
-   "en": "I'm lost.",
-   "alt": "I think I'm lost."
-  },
-  {
-   "id": "travel-025",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "財布を盗まれました。",
-   "note": "盗難にあったとき",
-   "en": "My wallet was stolen.",
-   "alt": "Someone stole my wallet."
-  },
-  {
-   "id": "travel-026",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "助けてもらえますか？",
-   "note": "困ったときに声をかける",
-   "en": "Could you help me?",
-   "alt": "Excuse me, could you give me a hand?"
-  },
-  {
-   "id": "travel-027",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "最寄りの駅はどこですか？",
-   "note": "道を尋ねる",
-   "en": "Where is the nearest station?",
-   "alt": "How do I get to the closest station?"
-  },
-  {
-   "id": "travel-028",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "気分が悪いです。",
-   "note": "体調不良を伝える",
-   "en": "I don't feel well.",
-   "alt": "I'm feeling sick."
-  },
-  {
-   "id": "travel-029",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "警察を呼んでください。",
-   "note": "緊急時",
-   "en": "Please call the police.",
-   "alt": "Call the police, please!"
-  },
-  {
-   "id": "travel-030",
-   "cat": "travel",
-   "scene": "トラブル",
-   "ja": "電車に乗り遅れました。",
-   "note": "交通機関のトラブル",
-   "en": "I missed my train.",
-   "alt": "I didn't make it in time for the train."
-  },
-  {
-   "id": "interview-001",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "お時間をいただきありがとうございます。",
-   "note": "面接の冒頭で",
-   "en": "Thank you for taking the time to meet with me.",
-   "alt": "I appreciate you having me today."
-  },
-  {
-   "id": "interview-002",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "簡単に自己紹介させてください。",
-   "note": "自己紹介の切り出し",
-   "en": "Let me briefly introduce myself.",
-   "alt": "I'd like to tell you a little about myself."
-  },
-  {
-   "id": "interview-003",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "〇〇として5年の経験があります。",
-   "note": "経験年数を伝える",
-   "en": "I have five years of experience as an engineer.",
-   "alt": "I've worked as an engineer for five years."
-  },
-  {
-   "id": "interview-004",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "私の強みは問題解決力です。",
-   "note": "強みを伝える",
-   "en": "My strength is problem-solving.",
-   "alt": "I'm good at solving problems."
-  },
-  {
-   "id": "interview-005",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "チームで働くのが好きです。",
-   "note": "働き方の好み",
-   "en": "I enjoy working in a team.",
-   "alt": "I'm a team player."
-  },
-  {
-   "id": "interview-006",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "新しいことを学ぶのが好きです。",
-   "note": "向上心をアピール",
-   "en": "I love learning new things.",
-   "alt": "I'm always eager to learn."
-  },
-  {
-   "id": "interview-007",
-   "cat": "interview",
-   "scene": "自己紹介",
-   "ja": "私の弱みは完璧主義なところです。",
-   "note": "弱みを聞かれて",
-   "en": "My weakness is that I can be a perfectionist.",
-   "alt": "I tend to be a bit of a perfectionist."
-  },
-  {
-   "id": "interview-008",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "現在はIT企業で働いています。",
-   "note": "現職を伝える",
-   "en": "I currently work at an IT company.",
-   "alt": "I'm currently employed at a tech company."
-  },
-  {
-   "id": "interview-009",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "プロジェクトマネジメントを担当しています。",
-   "note": "担当業務を説明",
-   "en": "I'm in charge of project management.",
-   "alt": "I'm responsible for managing projects."
-  },
-  {
-   "id": "interview-010",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "5人のチームを率いていました。",
-   "note": "マネジメント経験",
-   "en": "I led a team of five people.",
-   "alt": "I managed a team of five."
-  },
-  {
-   "id": "interview-011",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "売上を20%伸ばしました。",
-   "note": "数字で実績を示す",
-   "en": "I increased sales by 20 percent.",
-   "alt": "I grew revenue by 20 percent."
-  },
-  {
-   "id": "interview-012",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "最も大きな成果は…です。",
-   "note": "代表的な実績を語る",
-   "en": "My biggest achievement was ...",
-   "alt": "What I'm most proud of is ..."
-  },
-  {
-   "id": "interview-013",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "その経験から多くを学びました。",
-   "note": "失敗談や経験を締める",
-   "en": "I learned a lot from that experience.",
-   "alt": "That experience taught me a lot."
-  },
-  {
-   "id": "interview-014",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "困難をこう乗り越えました。",
-   "note": "課題解決エピソード",
-   "en": "Here's how I overcame the challenge.",
-   "alt": "This is how I dealt with the problem."
-  },
-  {
-   "id": "interview-015",
-   "cat": "interview",
-   "scene": "経歴説明",
-   "ja": "転職を考えたのは成長したいからです。",
-   "note": "転職理由を聞かれて",
-   "en": "I'm looking for a change because I want to grow.",
-   "alt": "I'm seeking new challenges to grow professionally."
-  },
-  {
-   "id": "interview-016",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "御社のビジョンに共感しました。",
-   "note": "志望動機の軸",
-   "en": "I really relate to your company's vision.",
-   "alt": "Your company's mission resonates with me."
-  },
-  {
-   "id": "interview-017",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "この職務に強く興味があります。",
-   "note": "ポジションへの熱意",
-   "en": "I'm very interested in this position.",
-   "alt": "This role really excites me."
-  },
-  {
-   "id": "interview-018",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "私の経験はこの仕事に活かせます。",
-   "note": "経験とのマッチ",
-   "en": "My experience is a good fit for this role.",
-   "alt": "I believe my background matches this job well."
-  },
-  {
-   "id": "interview-019",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "御社の製品をずっと使っています。",
-   "note": "身近なきっかけ",
-   "en": "I've been using your products for years.",
-   "alt": "I'm a long-time user of your products."
-  },
-  {
-   "id": "interview-020",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "グローバルな環境で働きたいです。",
-   "note": "環境を志望理由に",
-   "en": "I want to work in a global environment.",
-   "alt": "I'd like to work in an international setting."
-  },
-  {
-   "id": "interview-021",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "長期的に貢献したいと考えています。",
-   "note": "定着意欲を示す",
-   "en": "I'd like to contribute in the long term.",
-   "alt": "I see myself growing with this company."
-  },
-  {
-   "id": "interview-022",
-   "cat": "interview",
-   "scene": "志望動機",
-   "ja": "入社後すぐに貢献できます。",
-   "note": "即戦力アピール",
-   "en": "I can make an immediate contribution.",
-   "alt": "I can hit the ground running."
-  },
-  {
-   "id": "interview-023",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "質問してもよろしいですか？",
-   "note": "逆質問の切り出し",
-   "en": "May I ask a few questions?",
-   "alt": "I have a couple of questions, if that's okay."
-  },
-  {
-   "id": "interview-024",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "1日の典型的な仕事の流れを教えてください。",
-   "note": "業務イメージをつかむ",
-   "en": "What does a typical day look like?",
-   "alt": "Could you walk me through a typical day?"
-  },
-  {
-   "id": "interview-025",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "チームはどんな構成ですか？",
-   "note": "チームについて聞く",
-   "en": "What is the team structure like?",
-   "alt": "Could you tell me about the team?"
-  },
-  {
-   "id": "interview-026",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "このポジションで成功する人の特徴は？",
-   "note": "求める人物像を聞く",
-   "en": "What qualities make someone successful in this role?",
-   "alt": "What does success look like in this position?"
-  },
-  {
-   "id": "interview-027",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "研修制度はありますか？",
-   "note": "教育体制を確認",
-   "en": "Do you offer any training programs?",
-   "alt": "What kind of training is available?"
-  },
-  {
-   "id": "interview-028",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "今後の選考の流れを教えてください。",
-   "note": "次のステップを確認",
-   "en": "What are the next steps in the process?",
-   "alt": "What does the rest of the hiring process look like?"
-  },
-  {
-   "id": "interview-029",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "リモートワークは可能ですか？",
-   "note": "働き方を確認",
-   "en": "Is remote work an option?",
-   "alt": "Do you offer flexible working arrangements?"
-  },
-  {
-   "id": "interview-030",
-   "cat": "interview",
-   "scene": "逆質問",
-   "ja": "本日はありがとうございました。",
-   "note": "面接の締めくくり",
-   "en": "Thank you for your time today.",
-   "alt": "I really enjoyed talking with you today."
-  }
+  {"id": "work-001", "cat": "work", "scene": "会議", "ja": "始めましょうか。", "note": "会議の冒頭で", "en": "Shall we get started?", "alt": "Let's get the ball rolling.", "mood": "confident", "icon": "🚀"},
+  {"id": "work-002", "cat": "work", "scene": "会議", "ja": "今日の議題を確認させてください。", "note": "会議の最初にアジェンダ確認", "en": "Let me go over today's agenda.", "alt": "Let's run through the agenda first.", "mood": "smile", "icon": "📋"},
+  {"id": "work-003", "cat": "work", "scene": "会議", "ja": "ちょっと付け加えてもいいですか？", "note": "発言に割り込みたいとき", "en": "Can I add something here?", "alt": "If I could just jump in for a second...", "mood": "smile", "icon": "✋"},
+  {"id": "work-004", "cat": "work", "scene": "会議", "ja": "要点をまとめると…", "note": "議論を整理する", "en": "To sum up, ...", "alt": "In a nutshell, ...", "mood": "confident", "icon": "📝"},
+  {"id": "work-005", "cat": "work", "scene": "会議", "ja": "その件は後で話しましょう。", "note": "脱線した話題を戻す", "en": "Let's come back to that later.", "alt": "Let's park that for now.", "mood": "smile", "icon": "⏸️"},
+  {"id": "work-006", "cat": "work", "scene": "会議", "ja": "認識を合わせておきたいです。", "note": "全員の理解をそろえる", "en": "I want to make sure we're on the same page.", "alt": "Let's make sure we're all aligned.", "mood": "smile", "icon": "🤝"},
+  {"id": "work-007", "cat": "work", "scene": "会議", "ja": "次のステップは何ですか？", "note": "会議の締めくくりに", "en": "What are the next steps?", "alt": "Where do we go from here?", "mood": "think", "icon": "👣"},
+  {"id": "work-008", "cat": "work", "scene": "会議", "ja": "時間になったので終わりにしましょう。", "note": "会議を締める", "en": "We're out of time, so let's wrap up.", "alt": "Let's call it a day.", "mood": "happy", "icon": "⏰"},
+  {"id": "work-009", "cat": "work", "scene": "メール", "ja": "ご連絡ありがとうございます。", "note": "返信の書き出し", "en": "Thank you for reaching out.", "alt": "Thanks for getting in touch.", "mood": "happy", "icon": "📩"},
+  {"id": "work-010", "cat": "work", "scene": "メール", "ja": "資料を添付します。", "note": "ファイルを送るとき", "en": "Please find the document attached.", "alt": "I've attached the file for your reference.", "mood": "smile", "icon": "📎"},
+  {"id": "work-011", "cat": "work", "scene": "メール", "ja": "念のため確認です。", "note": "リマインドを送る", "en": "Just a quick reminder.", "alt": "Just following up on this.", "mood": "smile", "icon": "🔔"},
+  {"id": "work-012", "cat": "work", "scene": "メール", "ja": "ご都合のよい日時を教えてください。", "note": "日程調整", "en": "Please let me know what time works for you.", "alt": "When would be a good time for you?", "mood": "think", "icon": "📅"},
+  {"id": "work-013", "cat": "work", "scene": "メール", "ja": "返信が遅くなりすみません。", "note": "遅れて返信するとき", "en": "Sorry for the late reply.", "alt": "Apologies for the delayed response.", "mood": "sorry", "icon": "⌛"},
+  {"id": "work-014", "cat": "work", "scene": "メール", "ja": "ご不明点があればお知らせください。", "note": "メールの締め", "en": "Please let me know if you have any questions.", "alt": "Feel free to reach out if anything is unclear.", "mood": "smile", "icon": "❓"},
+  {"id": "work-015", "cat": "work", "scene": "メール", "ja": "お返事お待ちしています。", "note": "返事を促す締めの一文", "en": "I look forward to hearing from you.", "alt": "Looking forward to your reply.", "mood": "smile", "icon": "💌"},
+  {"id": "work-016", "cat": "work", "scene": "メール", "ja": "〇〇さんをCCに入れています。", "note": "関係者を共有", "en": "I've cc'd Mike on this email.", "alt": "I'm looping in Mike.", "mood": "smile", "icon": "👥"},
+  {"id": "work-017", "cat": "work", "scene": "電話", "ja": "〇〇さんはいらっしゃいますか？", "note": "電話で取り次ぎを頼む", "en": "May I speak to Ms. Smith?", "alt": "Could you put me through to Ms. Smith?", "mood": "smile", "icon": "📞"},
+  {"id": "work-018", "cat": "work", "scene": "電話", "ja": "少々お待ちください。", "note": "電話を保留にする", "en": "Could you hold on a moment?", "alt": "One moment, please.", "mood": "smile", "icon": "⏳"},
+  {"id": "work-019", "cat": "work", "scene": "電話", "ja": "折り返しお電話します。", "note": "すぐ対応できないとき", "en": "I'll call you back.", "alt": "Let me get back to you shortly.", "mood": "sorry", "icon": "🔁"},
+  {"id": "work-020", "cat": "work", "scene": "電話", "ja": "音声が途切れています。", "note": "電話・オンライン会議で", "en": "You're breaking up.", "alt": "The connection is a bit choppy.", "mood": "worried", "icon": "📶"},
+  {"id": "work-021", "cat": "work", "scene": "電話", "ja": "伝言をお願いできますか？", "note": "相手が不在のとき", "en": "Could I leave a message?", "alt": "Could you take a message?", "mood": "think", "icon": "📝"},
+  {"id": "work-022", "cat": "work", "scene": "電話", "ja": "もう一度お名前をお願いします。", "note": "名前を聞き取れなかった", "en": "Could I have your name again, please?", "alt": "Sorry, who am I speaking with?", "mood": "surprised", "icon": "❔"},
+  {"id": "work-023", "cat": "work", "scene": "電話", "ja": "お電話ありがとうございました。", "note": "電話を切る前に", "en": "Thanks for calling.", "alt": "Thank you for your time on the phone.", "mood": "happy", "icon": "🙏"},
+  {"id": "work-024", "cat": "work", "scene": "交渉", "ja": "妥協点を見つけましょう。", "note": "交渉で歩み寄りを提案", "en": "Let's find a middle ground.", "alt": "Can we meet halfway?", "mood": "think", "icon": "⚖️"},
+  {"id": "work-025", "cat": "work", "scene": "交渉", "ja": "それは少し難しいです。", "note": "やんわり断る", "en": "That might be a bit difficult for us.", "alt": "I'm afraid that's a little tough.", "mood": "worried", "icon": "🚧"},
+  {"id": "work-026", "cat": "work", "scene": "交渉", "ja": "検討させてください。", "note": "即答を避ける", "en": "Let me think it over.", "alt": "I'll need some time to consider it.", "mood": "think", "icon": "💭"},
+  {"id": "work-027", "cat": "work", "scene": "交渉", "ja": "ここが譲れない点です。", "note": "絶対条件を伝える", "en": "This is a deal-breaker for us.", "alt": "This point is non-negotiable.", "mood": "confident", "icon": "🛑"},
+  {"id": "work-028", "cat": "work", "scene": "交渉", "ja": "値引きは可能ですか？", "note": "価格交渉", "en": "Is there any room for a discount?", "alt": "Is the price negotiable?", "mood": "think", "icon": "💰"},
+  {"id": "work-029", "cat": "work", "scene": "交渉", "ja": "それなら合意できます。", "note": "条件付きで合意", "en": "We can agree to that.", "alt": "That works for us.", "mood": "happy", "icon": "✅"},
+  {"id": "work-030", "cat": "work", "scene": "交渉", "ja": "社内で確認してから返事します。", "note": "持ち帰って検討", "en": "I'll check with my team and get back to you.", "alt": "Let me run it by my manager first.", "mood": "think", "icon": "🏢"},
+  {"id": "lesson-001", "cat": "lesson", "scene": "雑談", "ja": "最近どう？", "note": "あいさつ代わりに", "en": "How have you been?", "alt": "What have you been up to?", "mood": "happy", "icon": "👋"},
+  {"id": "lesson-002", "cat": "lesson", "scene": "雑談", "ja": "週末は何をしましたか？", "note": "月曜日のレッスンで", "en": "What did you do over the weekend?", "alt": "How was your weekend?", "mood": "smile", "icon": "🏖️"},
+  {"id": "lesson-003", "cat": "lesson", "scene": "雑談", "ja": "まあまあです。", "note": "調子を聞かれて", "en": "Not bad.", "alt": "Can't complain.", "mood": "smile", "icon": "☁️"},
+  {"id": "lesson-004", "cat": "lesson", "scene": "雑談", "ja": "それはいいですね！", "note": "相手の話に反応する", "en": "That sounds great!", "alt": "How nice!", "mood": "happy", "icon": "✨"},
+  {"id": "lesson-005", "cat": "lesson", "scene": "雑談", "ja": "それは大変でしたね。", "note": "相手の苦労話に共感", "en": "That must have been tough.", "alt": "Sorry to hear that.", "mood": "worried", "icon": "💧"},
+  {"id": "lesson-006", "cat": "lesson", "scene": "雑談", "ja": "実は最近〇〇にハマっています。", "note": "趣味の話題", "en": "I've been really into yoga lately.", "alt": "I'm hooked on yoga these days.", "mood": "happy", "icon": "🧘"},
+  {"id": "lesson-007", "cat": "lesson", "scene": "雑談", "ja": "ところで…", "note": "話題を変える", "en": "By the way, ...", "alt": "Speaking of which, ...", "mood": "smile", "icon": "🔀"},
+  {"id": "lesson-008", "cat": "lesson", "scene": "雑談", "ja": "わかる！", "note": "強く共感する", "en": "I know what you mean.", "alt": "Tell me about it.", "mood": "happy", "icon": "💯"},
+  {"id": "lesson-009", "cat": "lesson", "scene": "雑談", "ja": "今日はちょっと疲れています。", "note": "体調や気分を伝える", "en": "I'm a little tired today.", "alt": "I'm feeling a bit worn out today.", "mood": "worried", "icon": "💤"},
+  {"id": "lesson-010", "cat": "lesson", "scene": "雑談", "ja": "また来週！", "note": "レッスンの終わりに", "en": "See you next week!", "alt": "Talk to you next week!", "mood": "happy", "icon": "📅"},
+  {"id": "lesson-011", "cat": "lesson", "scene": "意見を言う", "ja": "個人的には…だと思います。", "note": "自分の意見を切り出す", "en": "Personally, I think ...", "alt": "In my opinion, ...", "mood": "confident", "icon": "💡"},
+  {"id": "lesson-012", "cat": "lesson", "scene": "意見を言う", "ja": "完全に同意します。", "note": "賛成を伝える", "en": "I totally agree.", "alt": "I couldn't agree more.", "mood": "happy", "icon": "👍"},
+  {"id": "lesson-013", "cat": "lesson", "scene": "意見を言う", "ja": "そうとも言えますが…", "note": "部分的に反対する", "en": "I see your point, but ...", "alt": "That's true, but ...", "mood": "think", "icon": "⚖️"},
+  {"id": "lesson-014", "cat": "lesson", "scene": "意見を言う", "ja": "私はそうは思いません。", "note": "はっきり反対する", "en": "I don't think so.", "alt": "I'm not sure I agree.", "mood": "confident", "icon": "❌"},
+  {"id": "lesson-015", "cat": "lesson", "scene": "意見を言う", "ja": "場合によります。", "note": "一概に言えないとき", "en": "It depends.", "alt": "It depends on the situation.", "mood": "think", "icon": "🌗"},
+  {"id": "lesson-016", "cat": "lesson", "scene": "意見を言う", "ja": "例えば…", "note": "具体例を出す", "en": "For example, ...", "alt": "For instance, ...", "mood": "smile", "icon": "🍎"},
+  {"id": "lesson-017", "cat": "lesson", "scene": "意見を言う", "ja": "理由は2つあります。", "note": "根拠を説明する", "en": "There are two reasons.", "alt": "I have two reasons for that.", "mood": "confident", "icon": "✌️"},
+  {"id": "lesson-018", "cat": "lesson", "scene": "意見を言う", "ja": "考えたこともなかったです。", "note": "新しい視点に驚く", "en": "I've never thought about it that way.", "alt": "That's a new way of looking at it.", "mood": "surprised", "icon": "🌟"},
+  {"id": "lesson-019", "cat": "lesson", "scene": "意見を言う", "ja": "どちらかというと…派です。", "note": "好みを伝える", "en": "I'd rather go with ...", "alt": "I'm more of a ... person.", "mood": "smile", "icon": "❤️"},
+  {"id": "lesson-020", "cat": "lesson", "scene": "意見を言う", "ja": "うまく言えないんですが…", "note": "言葉に詰まったとき", "en": "I'm not sure how to put this, but ...", "alt": "How should I say this...", "mood": "think", "icon": "🌀"},
+  {"id": "lesson-021", "cat": "lesson", "scene": "聞き返す", "ja": "もう一度言ってもらえますか？", "note": "聞き取れなかったとき", "en": "Could you say that again?", "alt": "Sorry, could you repeat that?", "mood": "surprised", "icon": "👂"},
+  {"id": "lesson-022", "cat": "lesson", "scene": "聞き返す", "ja": "もう少しゆっくり話してもらえますか？", "note": "早くて聞き取れない", "en": "Could you speak a little more slowly?", "alt": "Could you slow down a bit?", "mood": "worried", "icon": "🐢"},
+  {"id": "lesson-023", "cat": "lesson", "scene": "聞き返す", "ja": "それはどういう意味ですか？", "note": "意味がわからない", "en": "What do you mean by that?", "alt": "What does that mean?", "mood": "think", "icon": "❓"},
+  {"id": "lesson-024", "cat": "lesson", "scene": "聞き返す", "ja": "つまり…ということですか？", "note": "理解を確認する", "en": "So you mean ...?", "alt": "Are you saying that ...?", "mood": "think", "icon": "🧩"},
+  {"id": "lesson-025", "cat": "lesson", "scene": "聞き返す", "ja": "〇〇はどう綴りますか？", "note": "単語のつづりを聞く", "en": "How do you spell that?", "alt": "Could you spell that for me?", "mood": "smile", "icon": "✏️"},
+  {"id": "lesson-026", "cat": "lesson", "scene": "聞き返す", "ja": "英語で何と言いますか？", "note": "言い方がわからない", "en": "How do you say this in English?", "alt": "What's the English word for this?", "mood": "think", "icon": "🗣️"},
+  {"id": "lesson-027", "cat": "lesson", "scene": "聞き返す", "ja": "例を挙げてもらえますか？", "note": "具体例がほしい", "en": "Could you give me an example?", "alt": "Can you show me an example?", "mood": "think", "icon": "📖"},
+  {"id": "lesson-028", "cat": "lesson", "scene": "聞き返す", "ja": "ちょっと考えさせてください。", "note": "答えるまで時間がほしい", "en": "Let me think for a moment.", "alt": "Give me a second.", "mood": "think", "icon": "🧠"},
+  {"id": "lesson-029", "cat": "lesson", "scene": "聞き返す", "ja": "今の言い方で合っていますか？", "note": "自分の英語を確認", "en": "Did I say that correctly?", "alt": "Is that the right way to say it?", "mood": "worried", "icon": "🎯"},
+  {"id": "lesson-030", "cat": "lesson", "scene": "聞き返す", "ja": "もっと自然な言い方はありますか？", "note": "表現を磨きたい", "en": "Is there a more natural way to say it?", "alt": "How would a native speaker say it?", "mood": "smile", "icon": "🌱"},
+  {"id": "travel-001", "cat": "travel", "scene": "空港", "ja": "通路側の席をお願いします。", "note": "チェックインカウンターで", "en": "I'd like an aisle seat, please.", "alt": "Can I have an aisle seat?", "mood": "smile", "icon": "💺"},
+  {"id": "travel-002", "cat": "travel", "scene": "空港", "ja": "観光です。", "note": "入国審査で目的を聞かれて", "en": "I'm here for sightseeing.", "alt": "I'm here on vacation.", "mood": "happy", "icon": "📸"},
+  {"id": "travel-003", "cat": "travel", "scene": "空港", "ja": "1週間滞在します。", "note": "入国審査で期間を聞かれて", "en": "I'm staying for a week.", "alt": "I'll be here for one week.", "mood": "smile", "icon": "📅"},
+  {"id": "travel-004", "cat": "travel", "scene": "空港", "ja": "荷物が出てきません。", "note": "手荷物受取所で", "en": "My baggage hasn't come out.", "alt": "I can't find my luggage.", "mood": "worried", "icon": "🧳"},
+  {"id": "travel-005", "cat": "travel", "scene": "空港", "ja": "乗り継ぎはどこですか？", "note": "トランジットで", "en": "Where do I go for connecting flights?", "alt": "Where is the transfer desk?", "mood": "think", "icon": "🛫"},
+  {"id": "travel-006", "cat": "travel", "scene": "空港", "ja": "何番ゲートですか？", "note": "搭乗口を確認", "en": "Which gate is it?", "alt": "What gate does this flight leave from?", "mood": "think", "icon": "🚪"},
+  {"id": "travel-007", "cat": "travel", "scene": "空港", "ja": "申告するものはありません。", "note": "税関で", "en": "I have nothing to declare.", "alt": "Nothing to declare.", "mood": "confident", "icon": "🛃"},
+  {"id": "travel-008", "cat": "travel", "scene": "空港", "ja": "市内へはどう行けばいいですか？", "note": "空港から移動するとき", "en": "How can I get to downtown?", "alt": "What's the best way to get to the city center?", "mood": "think", "icon": "🚕"},
+  {"id": "travel-009", "cat": "travel", "scene": "ホテル", "ja": "チェックインをお願いします。予約しています。", "note": "フロントで", "en": "I'd like to check in. I have a reservation.", "alt": "Hi, I'm checking in. The reservation is under Tanaka.", "mood": "smile", "icon": "🛎️"},
+  {"id": "travel-010", "cat": "travel", "scene": "ホテル", "ja": "荷物を預かってもらえますか？", "note": "チェックイン前・アウト後", "en": "Could you keep my luggage?", "alt": "Can I leave my bags here?", "mood": "smile", "icon": "🎒"},
+  {"id": "travel-011", "cat": "travel", "scene": "ホテル", "ja": "Wi-Fiのパスワードは何ですか？", "note": "部屋でネットを使いたい", "en": "What's the Wi-Fi password?", "alt": "Could I get the Wi-Fi password?", "mood": "smile", "icon": "📶"},
+  {"id": "travel-012", "cat": "travel", "scene": "ホテル", "ja": "朝食は何時からですか？", "note": "朝食の時間を確認", "en": "What time is breakfast served?", "alt": "When does breakfast start?", "mood": "happy", "icon": "🍳"},
+  {"id": "travel-013", "cat": "travel", "scene": "ホテル", "ja": "お湯が出ません。", "note": "部屋のトラブル", "en": "There's no hot water.", "alt": "The hot water isn't working.", "mood": "worried", "icon": "🚿"},
+  {"id": "travel-014", "cat": "travel", "scene": "ホテル", "ja": "タオルを追加でもらえますか？", "note": "アメニティを頼む", "en": "Could I get some extra towels?", "alt": "Can you bring more towels, please?", "mood": "smile", "icon": "🧺"},
+  {"id": "travel-015", "cat": "travel", "scene": "ホテル", "ja": "レイトチェックアウトはできますか？", "note": "遅く出たいとき", "en": "Is late checkout available?", "alt": "Could I check out a little later?", "mood": "think", "icon": "🕚"},
+  {"id": "travel-016", "cat": "travel", "scene": "ホテル", "ja": "タクシーを呼んでもらえますか？", "note": "フロントで頼む", "en": "Could you call a taxi for me?", "alt": "Can you get me a cab?", "mood": "smile", "icon": "🚕"},
+  {"id": "travel-017", "cat": "travel", "scene": "レストラン", "ja": "2名です。", "note": "入店時に人数を伝える", "en": "A table for two, please.", "alt": "Two, please.", "mood": "happy", "icon": "✌️"},
+  {"id": "travel-018", "cat": "travel", "scene": "レストラン", "ja": "おすすめは何ですか？", "note": "メニューに迷ったとき", "en": "What do you recommend?", "alt": "What's popular here?", "mood": "think", "icon": "⭐"},
+  {"id": "travel-019", "cat": "travel", "scene": "レストラン", "ja": "これをください。", "note": "メニューを指さして注文", "en": "I'll have this one.", "alt": "Can I get this, please?", "mood": "happy", "icon": "🍝"},
+  {"id": "travel-020", "cat": "travel", "scene": "レストラン", "ja": "エビアレルギーがあります。", "note": "アレルギーを伝える", "en": "I'm allergic to shrimp.", "alt": "I can't eat shrimp. I have an allergy.", "mood": "worried", "icon": "🦐"},
+  {"id": "travel-021", "cat": "travel", "scene": "レストラン", "ja": "お会計をお願いします。", "note": "支払いをするとき", "en": "Can I have the check, please?", "alt": "Could we get the bill?", "mood": "smile", "icon": "🧾"},
+  {"id": "travel-022", "cat": "travel", "scene": "レストラン", "ja": "持ち帰りにできますか？", "note": "残りを持ち帰りたい", "en": "Can I get this to go?", "alt": "Could I have a box for the leftovers?", "mood": "smile", "icon": "🥡"},
+  {"id": "travel-023", "cat": "travel", "scene": "レストラン", "ja": "カードで払えますか？", "note": "支払い方法を確認", "en": "Do you take credit cards?", "alt": "Can I pay by card?", "mood": "think", "icon": "💳"},
+  {"id": "travel-024", "cat": "travel", "scene": "トラブル", "ja": "道に迷いました。", "note": "現在地がわからない", "en": "I'm lost.", "alt": "I think I'm lost.", "mood": "worried", "icon": "🗺️"},
+  {"id": "travel-025", "cat": "travel", "scene": "トラブル", "ja": "財布を盗まれました。", "note": "盗難にあったとき", "en": "My wallet was stolen.", "alt": "Someone stole my wallet.", "mood": "worried", "icon": "👛"},
+  {"id": "travel-026", "cat": "travel", "scene": "トラブル", "ja": "助けてもらえますか？", "note": "困ったときに声をかける", "en": "Could you help me?", "alt": "Excuse me, could you give me a hand?", "mood": "worried", "icon": "🆘"},
+  {"id": "travel-027", "cat": "travel", "scene": "トラブル", "ja": "最寄りの駅はどこですか？", "note": "道を尋ねる", "en": "Where is the nearest station?", "alt": "How do I get to the closest station?", "mood": "think", "icon": "🚉"},
+  {"id": "travel-028", "cat": "travel", "scene": "トラブル", "ja": "気分が悪いです。", "note": "体調不良を伝える", "en": "I don't feel well.", "alt": "I'm feeling sick.", "mood": "worried", "icon": "🤒"},
+  {"id": "travel-029", "cat": "travel", "scene": "トラブル", "ja": "警察を呼んでください。", "note": "緊急時", "en": "Please call the police.", "alt": "Call the police, please!", "mood": "surprised", "icon": "🚓"},
+  {"id": "travel-030", "cat": "travel", "scene": "トラブル", "ja": "電車に乗り遅れました。", "note": "交通機関のトラブル", "en": "I missed my train.", "alt": "I didn't make it in time for the train.", "mood": "sorry", "icon": "🚃"},
+  {"id": "interview-001", "cat": "interview", "scene": "自己紹介", "ja": "お時間をいただきありがとうございます。", "note": "面接の冒頭で", "en": "Thank you for taking the time to meet with me.", "alt": "I appreciate you having me today.", "mood": "smile", "icon": "🤝"},
+  {"id": "interview-002", "cat": "interview", "scene": "自己紹介", "ja": "簡単に自己紹介させてください。", "note": "自己紹介の切り出し", "en": "Let me briefly introduce myself.", "alt": "I'd like to tell you a little about myself.", "mood": "confident", "icon": "🙋"},
+  {"id": "interview-003", "cat": "interview", "scene": "自己紹介", "ja": "〇〇として5年の経験があります。", "note": "経験年数を伝える", "en": "I have five years of experience as an engineer.", "alt": "I've worked as an engineer for five years.", "mood": "confident", "icon": "💻"},
+  {"id": "interview-004", "cat": "interview", "scene": "自己紹介", "ja": "私の強みは問題解決力です。", "note": "強みを伝える", "en": "My strength is problem-solving.", "alt": "I'm good at solving problems.", "mood": "confident", "icon": "💪"},
+  {"id": "interview-005", "cat": "interview", "scene": "自己紹介", "ja": "チームで働くのが好きです。", "note": "働き方の好み", "en": "I enjoy working in a team.", "alt": "I'm a team player.", "mood": "happy", "icon": "👥"},
+  {"id": "interview-006", "cat": "interview", "scene": "自己紹介", "ja": "新しいことを学ぶのが好きです。", "note": "向上心をアピール", "en": "I love learning new things.", "alt": "I'm always eager to learn.", "mood": "happy", "icon": "📚"},
+  {"id": "interview-007", "cat": "interview", "scene": "自己紹介", "ja": "私の弱みは完璧主義なところです。", "note": "弱みを聞かれて", "en": "My weakness is that I can be a perfectionist.", "alt": "I tend to be a bit of a perfectionist.", "mood": "think", "icon": "🔍"},
+  {"id": "interview-008", "cat": "interview", "scene": "経歴説明", "ja": "現在はIT企業で働いています。", "note": "現職を伝える", "en": "I currently work at an IT company.", "alt": "I'm currently employed at a tech company.", "mood": "smile", "icon": "🏢"},
+  {"id": "interview-009", "cat": "interview", "scene": "経歴説明", "ja": "プロジェクトマネジメントを担当しています。", "note": "担当業務を説明", "en": "I'm in charge of project management.", "alt": "I'm responsible for managing projects.", "mood": "confident", "icon": "📊"},
+  {"id": "interview-010", "cat": "interview", "scene": "経歴説明", "ja": "5人のチームを率いていました。", "note": "マネジメント経験", "en": "I led a team of five people.", "alt": "I managed a team of five.", "mood": "confident", "icon": "🧭"},
+  {"id": "interview-011", "cat": "interview", "scene": "経歴説明", "ja": "売上を20%伸ばしました。", "note": "数字で実績を示す", "en": "I increased sales by 20 percent.", "alt": "I grew revenue by 20 percent.", "mood": "happy", "icon": "📈"},
+  {"id": "interview-012", "cat": "interview", "scene": "経歴説明", "ja": "最も大きな成果は…です。", "note": "代表的な実績を語る", "en": "My biggest achievement was ...", "alt": "What I'm most proud of is ...", "mood": "confident", "icon": "🏆"},
+  {"id": "interview-013", "cat": "interview", "scene": "経歴説明", "ja": "その経験から多くを学びました。", "note": "失敗談や経験を締める", "en": "I learned a lot from that experience.", "alt": "That experience taught me a lot.", "mood": "smile", "icon": "🌱"},
+  {"id": "interview-014", "cat": "interview", "scene": "経歴説明", "ja": "困難をこう乗り越えました。", "note": "課題解決エピソード", "en": "Here's how I overcame the challenge.", "alt": "This is how I dealt with the problem.", "mood": "confident", "icon": "🧗"},
+  {"id": "interview-015", "cat": "interview", "scene": "経歴説明", "ja": "転職を考えたのは成長したいからです。", "note": "転職理由を聞かれて", "en": "I'm looking for a change because I want to grow.", "alt": "I'm seeking new challenges to grow professionally.", "mood": "think", "icon": "🚀"},
+  {"id": "interview-016", "cat": "interview", "scene": "志望動機", "ja": "御社のビジョンに共感しました。", "note": "志望動機の軸", "en": "I really relate to your company's vision.", "alt": "Your company's mission resonates with me.", "mood": "happy", "icon": "🔭"},
+  {"id": "interview-017", "cat": "interview", "scene": "志望動機", "ja": "この職務に強く興味があります。", "note": "ポジションへの熱意", "en": "I'm very interested in this position.", "alt": "This role really excites me.", "mood": "happy", "icon": "🔥"},
+  {"id": "interview-018", "cat": "interview", "scene": "志望動機", "ja": "私の経験はこの仕事に活かせます。", "note": "経験とのマッチ", "en": "My experience is a good fit for this role.", "alt": "I believe my background matches this job well.", "mood": "confident", "icon": "🧩"},
+  {"id": "interview-019", "cat": "interview", "scene": "志望動機", "ja": "御社の製品をずっと使っています。", "note": "身近なきっかけ", "en": "I've been using your products for years.", "alt": "I'm a long-time user of your products.", "mood": "happy", "icon": "📱"},
+  {"id": "interview-020", "cat": "interview", "scene": "志望動機", "ja": "グローバルな環境で働きたいです。", "note": "環境を志望理由に", "en": "I want to work in a global environment.", "alt": "I'd like to work in an international setting.", "mood": "happy", "icon": "🌍"},
+  {"id": "interview-021", "cat": "interview", "scene": "志望動機", "ja": "長期的に貢献したいと考えています。", "note": "定着意欲を示す", "en": "I'd like to contribute in the long term.", "alt": "I see myself growing with this company.", "mood": "smile", "icon": "🌳"},
+  {"id": "interview-022", "cat": "interview", "scene": "志望動機", "ja": "入社後すぐに貢献できます。", "note": "即戦力アピール", "en": "I can make an immediate contribution.", "alt": "I can hit the ground running.", "mood": "confident", "icon": "⚡"},
+  {"id": "interview-023", "cat": "interview", "scene": "逆質問", "ja": "質問してもよろしいですか？", "note": "逆質問の切り出し", "en": "May I ask a few questions?", "alt": "I have a couple of questions, if that's okay.", "mood": "smile", "icon": "✋"},
+  {"id": "interview-024", "cat": "interview", "scene": "逆質問", "ja": "1日の典型的な仕事の流れを教えてください。", "note": "業務イメージをつかむ", "en": "What does a typical day look like?", "alt": "Could you walk me through a typical day?", "mood": "think", "icon": "🗓️"},
+  {"id": "interview-025", "cat": "interview", "scene": "逆質問", "ja": "チームはどんな構成ですか？", "note": "チームについて聞く", "en": "What is the team structure like?", "alt": "Could you tell me about the team?", "mood": "think", "icon": "🗂️"},
+  {"id": "interview-026", "cat": "interview", "scene": "逆質問", "ja": "このポジションで成功する人の特徴は？", "note": "求める人物像を聞く", "en": "What qualities make someone successful in this role?", "alt": "What does success look like in this position?", "mood": "think", "icon": "🌟"},
+  {"id": "interview-027", "cat": "interview", "scene": "逆質問", "ja": "研修制度はありますか？", "note": "教育体制を確認", "en": "Do you offer any training programs?", "alt": "What kind of training is available?", "mood": "think", "icon": "🎓"},
+  {"id": "interview-028", "cat": "interview", "scene": "逆質問", "ja": "今後の選考の流れを教えてください。", "note": "次のステップを確認", "en": "What are the next steps in the process?", "alt": "What does the rest of the hiring process look like?", "mood": "think", "icon": "📬"},
+  {"id": "interview-029", "cat": "interview", "scene": "逆質問", "ja": "リモートワークは可能ですか？", "note": "働き方を確認", "en": "Is remote work an option?", "alt": "Do you offer flexible working arrangements?", "mood": "think", "icon": "🏠"},
+  {"id": "interview-030", "cat": "interview", "scene": "逆質問", "ja": "本日はありがとうございました。", "note": "面接の締めくくり", "en": "Thank you for your time today.", "alt": "I really enjoyed talking with you today.", "mood": "happy", "icon": "🙏"}
  ]
 }
