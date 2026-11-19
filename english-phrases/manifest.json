@@ -1,0 +1,17 @@
+{
+  "name": "英語フレーズ集",
+  "short_name": "英語フレーズ",
+  "description": "実際に使える英語表現を、言えるようになるまで覚えるフラッシュカード",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF4E6",
+  "theme_color": "#FFF4E6",
+  "lang": "ja",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

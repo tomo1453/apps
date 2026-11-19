@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<meta name="theme-color" content="#FFF4E6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="英語フレーズ">
+<title>英語フレーズ</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- ヘッダー：進捗 -->
+  <header class="top">
+    <div class="top-row">
+      <div class="mastered"><span class="label">覚えた</span> <b id="mastered">0</b><span class="total"> / 全<span id="total">0</span>フレーズ</span></div>
+      <div class="chips">
+        <span class="chip streak" title="連続学習日数">🔥 <b id="streak">0</b>日</span>
+      </div>
+    </div>
+    <div class="bar"><div class="bar-fill" id="bar"></div></div>
+    <div class="top-row small">
+      <span>確認中 <b id="reviewing">0</b>件</span>
+      <span class="goal">今日 <b id="today">0</b> / <span id="goal">20</span>枚</span>
+    </div>
+    <div class="goalbar"><div class="goalbar-fill" id="goalbar"></div></div>
+  </header>
+
+  <!-- 学習画面 -->
+  <main id="study" class="screen active">
+    <div class="filter-row">
+      <select id="catFilter" aria-label="カテゴリ"></select>
+      <span class="combo" id="combo"></span>
+    </div>
+
+    <div class="card-wrap" id="cardWrap">
+      <div class="card" id="card" role="button" tabindex="0" aria-label="カードを裏返す">
+        <div class="face front">
+          <div class="badges"><span class="cat-badge" id="fCat"></span><span class="due-badge" id="fDue"></span></div>
+          <div class="ja" id="fJa"></div>
+          <div class="note" id="fNote"></div>
+          <div class="hint">タップで答え 👆</div>
+        </div>
+        <div class="face back">
+          <div class="badges"><span class="cat-badge" id="bCat"></span></div>
+          <div class="en" id="bEn"></div>
+          <button class="speak" id="speakBtn" aria-label="読み上げ">🔊</button>
+          <div class="alt"><span class="alt-label">似た言い方</span><span id="bAlt"></span>
+            <button class="speak mini" id="speakAltBtn" aria-label="似た言い方を読み上げ">🔊</button></div>
+          <div class="ja-small" id="bJa"></div>
+        </div>
+      </div>
+      <div class="empty" id="empty" hidden>
+        <div class="big">🎉</div>
+        <p id="emptyMsg">今出題できるフレーズはありません！</p>
+        <button class="btn primary" id="emptyFinish">今日の成果を見る</button>
+      </div>
+    </div>
+
+    <div class="answers" id="answers">
+      <button class="btn later" data-ans="later">まだ<small>もう一度</small></button>
+      <button class="btn got" data-ans="got">覚えた<small id="gotSub">5日後に確認</small></button>
+      <button class="btn known" data-ans="known">知ってる<small>出題しない</small></button>
+    </div>
+    <p class="queue-info" id="queueInfo"></p>
+  </main>
+
+  <!-- 達成率画面 -->
+  <section id="stats" class="screen">
+    <h2>カテゴリ別の達成率</h2>
+    <div id="catStats"></div>
+    <div class="stat-grid">
+      <div class="stat"><div class="n" id="sStreak">0</div><div class="l">連続学習日数</div></div>
+      <div class="stat"><div class="n" id="sBestStreak">0</div><div class="l">最長連続日数</div></div>
+      <div class="stat"><div class="n" id="sBestCombo">0</div><div class="l">最高コンボ</div></div>
+      <div class="stat"><div class="n" id="sTotal">0</div><div class="l">累計学習枚数</div></div>
+    </div>
+    <h3>最近の学習</h3>
+    <div class="week" id="week"></div>
+  </section>
+
+  <!-- 一覧画面 -->
+  <section id="list" class="screen">
+    <h2>フレーズ一覧</h2>
+    <div class="list-filters">
+      <select id="listCat" aria-label="カテゴリ"></select>
+      <select id="listStatus" aria-label="状態">
+        <option value="all">すべて</option>
+        <option value="new">未学習</option>
+        <option value="learning">練習中</option>
+        <option value="review">確認中</option>
+        <option value="known">知ってる</option>
+      </select>
+    </div>
+    <ul class="plist" id="plist"></ul>
+  </section>
+
+  <!-- 設定画面 -->
+  <section id="settings" class="screen">
+    <h2>設定</h2>
+    <label class="setting">1日の目標枚数
+      <div class="stepper">
+        <button class="btn sm" id="goalMinus">−</button>
+        <b id="goalVal">20</b>
+        <button class="btn sm" id="goalPlus">＋</button>
+      </div>
+    </label>
+    <label class="setting">読み上げ速度
+      <select id="rate">
+        <option value="0.7">ゆっくり</option>
+        <option value="0.9">ふつう</option>
+        <option value="1.05">はやい</option>
+      </select>
+    </label>
+    <label class="setting">裏返したら自動で読み上げ
+      <input type="checkbox" id="autoSpeak">
+    </label>
+    <div class="setting col">
+      <p class="muted">学習記録はこの端末のブラウザ内に保存されます。</p>
+      <button class="btn danger" id="resetBtn">学習記録をリセット</button>
+    </div>
+  </section>
+
+  <!-- 下部ナビ -->
+  <nav class="tabs">
+    <button class="tab active" data-screen="study">📖<span>学習</span></button>
+    <button class="tab" data-screen="stats">📊<span>達成率</span></button>
+    <button class="tab" data-screen="list">📋<span>一覧</span></button>
+    <button class="tab" data-screen="settings">⚙️<span>設定</span></button>
+    <button class="tab finish" id="finishBtn">🏁<span>終了</span></button>
+  </nav>
+</div>
+
+<!-- モーダル（お祝い・今日の成果） -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" id="modalBox"></div>
+</div>
+<div class="confetti" id="confetti"></div>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
