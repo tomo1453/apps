@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#1CC0AF"/><stop offset="1" stop-color="#0A6B64"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFDF7A"/><stop offset="1" stop-color="#E39C12"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <circle cx="256" cy="250" r="190" fill="#FFF5D9" opacity=".13"/>
+  <!-- flight path + plane -->
+  <path d="M60 170 Q190 40 400 92" fill="none" stroke="#FFF5D9" stroke-width="7" stroke-linecap="round" stroke-dasharray="2 18" opacity=".85"/>
+  <g transform="translate(428 98) rotate(12) scale(1.35)" fill="#FFF5D9">
+    <path d="M14 0 C14 -3 10 -4 6 -4 L-4 -4 L-16 -22 L-24 -22 L-16 -4 L-28 -4 L-34 -12 L-40 -12 L-36 0 L-40 12 L-34 12 L-28 4 L-16 4 L-24 22 L-16 22 L-4 4 L6 4 C10 4 14 3 14 0 Z"/>
+  </g>
+  <!-- sparkles -->
+  <path d="M440 200 l7 17 17 7 -17 7 -7 17 -7 -17 -17 -7 17 -7z" fill="#FFD25A"/>
+  <path d="M74 250 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z" fill="#FFD25A"/>
+  <!-- minarets -->
+  <g fill="#FFF5D9">
+    <rect x="92" y="230" width="34" height="210" rx="6"/>
+    <rect x="386" y="230" width="34" height="210" rx="6"/>
+  </g>
+  <rect x="88" y="262" width="42" height="12" rx="4" fill="#F2B632"/>
+  <rect x="382" y="262" width="42" height="12" rx="4" fill="#F2B632"/>
+  <path d="M90 232 Q109 196 128 232 Z" fill="url(#gold)"/>
+  <path d="M384 232 Q403 196 422 232 Z" fill="url(#gold)"/>
+  <!-- dome -->
+  <line x1="256" y1="92" x2="256" y2="132" stroke="#F2B632" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="256" cy="90" r="9" fill="#FFD25A"/>
+  <path d="M168 256 C164 196 214 164 256 128 C298 164 348 196 344 256 Z" fill="url(#gold)"/>
+  <g fill="none" stroke="#C98A0E" stroke-width="4" opacity=".55">
+    <path d="M256 132 V256"/>
+    <path d="M256 132 C232 160 212 200 212 256"/>
+    <path d="M256 132 C280 160 300 200 300 256"/>
+  </g>
+  <!-- drum -->
+  <rect x="180" y="252" width="152" height="34" rx="4" fill="#FFF5D9"/>
+  <g fill="#0E8C83"><circle cx="200" cy="269" r="6"/><circle cx="228" cy="269" r="6"/><circle cx="256" cy="269" r="6"/><circle cx="284" cy="269" r="6"/><circle cx="312" cy="269" r="6"/></g>
+  <!-- gate (pishtaq) -->
+  <rect x="140" y="286" width="232" height="160" rx="6" fill="#FFF5D9"/>
+  <rect x="140" y="286" width="232" height="18" fill="#F2B632"/>
+  <path d="M196 446 V350 Q196 312 256 300 Q316 312 316 350 V446 Z" fill="#F2B632"/>
+  <path d="M208 446 V352 Q208 322 256 312 Q304 322 304 352 V446 Z" fill="#0A6B64"/>
+  <path d="M256 330 l10 18 -10 18 -10 -18z" fill="#FFD25A"/>
+  <!-- ground -->
+  <rect x="0" y="440" width="512" height="72" fill="#0A6B64"/>
+  <rect x="0" y="440" width="512" height="8" fill="#F2B632"/>
+</svg>
