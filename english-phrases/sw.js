@@ -1,5 +1,5 @@
 // オフライン対応：アプリ本体はキャッシュ優先、フレーズデータはネットワーク優先
-const CACHE = 'english-phrases-v2';
+const CACHE = 'english-phrases-v3';
 const SHELL = ['./', './index.html', './style.css', './app.js', './illust.js', './phrases.json', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 

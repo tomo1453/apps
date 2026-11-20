@@ -430,21 +430,63 @@
   }
 
   // ---------- 読み上げ ----------
+  // iPhone（Safari / Chrome とも中身は同じ WebKit）向けの対策：
+  // ・ダウンロードされていない音声を指定すると無音になるため、確実に入っている音声だけ指定する
+  // ・cancel() の直後に speak() すると発話が消えるため、少し待ってから話す
+  // ・発話オブジェクトが途中で破棄されると無音になるため、参照を保持する
+  // ・最初のタップで無音の発話をして読み上げを有効化する
+  const synth = 'speechSynthesis' in window ? window.speechSynthesis : null;
   let voice = null;
+  let speaking = null;
+  let unlocked = false;
+  let failCount = 0;
+  let hintShown = false;
   function pickVoice() {
-    if (!('speechSynthesis' in window)) return;
-    const vs = speechSynthesis.getVoices().filter((v) => /en[-_]US/i.test(v.lang));
-    const pref = ['Samantha', 'Ava', 'Allison', 'Google US English', 'Alex'];
-    voice = pref.map((n) => vs.find((v) => v.name.includes(n))).find(Boolean) || vs.find((v) => v.localService) || vs[0] || null;
+    if (!synth) return;
+    const vs = synth.getVoices().filter((v) => /^en[-_]US/i.test(v.lang));
+    const safe = ['Samantha', 'Google US English', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Zira'];
+    voice = safe.map((n) => vs.find((v) => v.name.startsWith(n))).find(Boolean) || null;
   }
-  function speak(text) {
-    if (!('speechSynthesis' in window)) { toast('この端末は読み上げに対応していません'); return; }
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-US';
-    if (voice) u.voice = voice;
-    u.rate = Number(state.settings.rate) || 0.9;
-    speechSynthesis.speak(u);
+  function unlockSpeech() {
+    if (!synth || unlocked) return;
+    unlocked = true;
+    try {
+      const u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0;
+      u.lang = 'en-US';
+      synth.speak(u);
+    } catch (e) { /* 無視 */ }
+  }
+  function speak(text, retry = false) {
+    if (!synth) { toast('この端末のブラウザは読み上げに対応していません'); return; }
+    if (!hintShown) {
+      hintShown = true;
+      toast('🔈 音が出ないときは消音モード・音量を確認してね');
+    }
+    const go = () => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      if (voice && !retry) u.voice = voice;
+      u.rate = Number(state.settings.rate) || 0.9;
+      u.volume = 1;
+      let started = false;
+      u.onstart = () => { started = true; failCount = 0; };
+      u.onerror = (e) => {
+        if (started || e.error === 'interrupted' || e.error === 'canceled') return;
+        if (!retry) speak(text, true);
+      };
+      speaking = u; // 破棄されないよう保持
+      synth.resume();
+      synth.speak(u);
+      // 一定時間で始まらなければ、音声指定なしでもう一度
+      setTimeout(() => {
+        if (started || speaking !== u) return;
+        if (!retry) { synth.cancel(); setTimeout(() => speak(text, true), 60); }
+        else if (++failCount >= 1) toast('読み上げを開始できませんでした。設定 › アクセシビリティ › 読み上げコンテンツ で英語の声を入れてください');
+      }, 1500);
+    };
+    if (synth.speaking || synth.pending) { synth.cancel(); setTimeout(go, 80); }
+    else go();
   }
 
   // ---------- 画面切り替え ----------
@@ -538,9 +580,12 @@
       }
     });
 
-    if ('speechSynthesis' in window) {
+    if (synth) {
       pickVoice();
-      speechSynthesis.addEventListener?.('voiceschanged', pickVoice);
+      if (synth.addEventListener) synth.addEventListener('voiceschanged', pickVoice);
+      else synth.onvoiceschanged = pickVoice;
+      // 最初のタップで読み上げを有効化（iPhone対策）
+      ['touchend', 'click'].forEach((ev) => document.addEventListener(ev, unlockSpeech, { capture: true, passive: true }));
     }
   }
 
