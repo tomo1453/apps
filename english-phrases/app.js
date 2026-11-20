@@ -198,7 +198,7 @@
     if (!current || busy) return;
     flipped = !flipped;
     $('card').classList.toggle('flipped', flipped);
-    if (flipped && state.settings.autoSpeak) speak(current.en);
+    if (flipped && state.settings.autoSpeak) playPhrase(current);
   }
 
   function renderCombo(bump) {
@@ -457,11 +457,35 @@
       synth.speak(u);
     } catch (e) { /* 無視 */ }
   }
+  // ---------- 音声ファイル再生（サイレントモードでも鳴る） ----------
+  // audio/<id>.mp3（英語）と audio/<id>-alt.mp3（似た言い方）を再生する。
+  // ファイルがないフレーズは端末の読み上げ（speak）で代わりに読む。
+  const player = new Audio();
+  player.preload = 'auto';
+  player.setAttribute('playsinline', '');
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { /* 未対応 */ }
+  let playToken = 0;
+  function playPhrase(p, alt = false) {
+    if (!p) return;
+    const text = alt ? p.alt : p.en;
+    const token = ++playToken;
+    if (synth && (synth.speaking || synth.pending)) synth.cancel();
+    player.pause();
+    player.src = `audio/${encodeURIComponent(p.id)}${alt ? '-alt' : ''}.mp3`;
+    player.playbackRate = (Number(state.settings.rate) || 0.9) / 0.9;
+    player.preservesPitch = true; player.webkitPreservesPitch = true;
+    let fellBack = false;
+    const fallback = () => { if (token !== playToken || fellBack) return; fellBack = true; speak(text); };
+    player.onerror = fallback;
+    const pr = player.play();
+    if (pr && pr.catch) pr.catch((err) => { if (!(err && err.name === 'AbortError')) fallback(); });
+  }
+
   function speak(text, retry = false) {
     if (!synth) { toast('この端末のブラウザは読み上げに対応していません'); return; }
     if (!hintShown) {
       hintShown = true;
-      toast('🔈 音が出ないときは消音モード・音量を確認してね');
+      toast('🔈 このフレーズは端末の読み上げで再生中（消音モードでは鳴りません）');
     }
     const go = () => {
       const u = new SpeechSynthesisUtterance(text);
@@ -516,8 +540,8 @@
   function bind() {
     const cardEl = $('card');
     cardEl.addEventListener('click', (e) => { if (!e.target.closest('.speak')) flip(); });
-    $('speakBtn').addEventListener('click', (e) => { e.stopPropagation(); current && speak(current.en); });
-    $('speakAltBtn').addEventListener('click', (e) => { e.stopPropagation(); current && speak(current.alt); });
+    $('speakBtn').addEventListener('click', (e) => { e.stopPropagation(); current && playPhrase(current); });
+    $('speakAltBtn').addEventListener('click', (e) => { e.stopPropagation(); current && playPhrase(current, true); });
     document.querySelectorAll('[data-ans]').forEach((b) => b.addEventListener('click', () => answer(b.dataset.ans)));
 
     document.querySelectorAll('.tab[data-screen]').forEach((t) => t.addEventListener('click', () => showScreen(t.dataset.screen)));
@@ -537,7 +561,7 @@
       const r = e.target.closest('[data-restore]');
       if (r) return restore(r.dataset.restore);
       const s = e.target.closest('[data-say]');
-      if (s) speak(phrases.find((p) => p.id === s.dataset.say).en);
+      if (s) playPhrase(phrases.find((p) => p.id === s.dataset.say));
     });
 
     const setGoal = (d) => {
@@ -546,7 +570,7 @@
     };
     $('goalMinus').addEventListener('click', () => setGoal(-5));
     $('goalPlus').addEventListener('click', () => setGoal(5));
-    $('rate').addEventListener('change', (e) => { state.settings.rate = Number(e.target.value); save(); speak('How are you doing today?'); });
+    $('rate').addEventListener('change', (e) => { state.settings.rate = Number(e.target.value); save(); playPhrase(current || phrases[0]); });
     $('autoSpeak').addEventListener('change', (e) => { state.settings.autoSpeak = e.target.checked; save(); });
     $('resetBtn').addEventListener('click', () => {
       if (!confirm('学習記録をすべて消去します。よろしいですか？')) return;
@@ -566,7 +590,7 @@
       else if (e.key === '1') answer('later');
       else if (e.key === '2') answer('got');
       else if (e.key === '3') answer('known');
-      else if (e.key === 's' && current) speak(current.en);
+      else if (e.key === 's' && current) playPhrase(current);
     });
 
     // 再表示時：日付が変わっていたり、期限を迎えたカードがあれば優先して出題

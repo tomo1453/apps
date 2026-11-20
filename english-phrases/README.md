@@ -36,3 +36,10 @@ cd english-phrases && python3 -m http.server 8000
 - 主人公の表情：`mood`（`smile` / `happy` / `think` / `surprised` / `sorry` / `worried` / `confident`）
 - 吹き出しの絵文字：`icon`
 - 自分で用意した画像を使う場合は `"image": "images/xxx.png"` を指定（イラストより優先）
+
+### 音声（サイレントモード対応）
+🔊 は `audio/<id>.mp3`（英語）と `audio/<id>-alt.mp3`（似た言い方）を再生します。音声ファイルの再生なので、iPhone の消音モードでも鳴ります。
+音声は Kokoro（Apache-2.0 の音声合成モデル）の `af_heart`（アメリカ英語）で作成しています。
+
+フレーズを追加したときは `tools/make_audio.py` で音声を作れます（使い方はファイル冒頭）。
+音声ファイルがないフレーズは端末の読み上げ機能で読みます（この場合は消音モードでは鳴りません）。
