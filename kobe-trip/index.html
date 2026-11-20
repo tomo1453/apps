@@ -6,73 +6,112 @@
 <title>神戸おさんぽ旅のしおり</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kiwi+Maru:wght@500&display=swap">
 <style>
-/* layout: 1カラムの冊子。時刻の縦タイムライン＋最後に持ち物チェック */
+/* layout: ステッチ縫いの手帳風。ドット柄の表紙カード → 時刻のスタンプ付きタイムライン → 持ちもの */
 :root{
-  --bg:#f3f6f7; --paper:#ffffff; --ink:#1f2a33; --muted:#5e6b75;
-  --line:#d6e0e4; --accent:#1f6f8b; --accent-soft:#e2f0f4; --warm:#b5653b;
+  --bg:#fff4f6; --paper:#ffffff; --ink:#4f3a45; --muted:#8f7480;
+  --pink:#ec7a98; --pink-soft:#ffe1e8; --mint:#5fb8a4; --mint-soft:#dcf3ec;
+  --butter:#f4c95d; --butter-soft:#fff3d1; --line:#f3cfd8; --dot:#ffd3de;
   --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
-  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+  --body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;
+  --hand:"Kiwi Maru","Zen Maru Gothic",serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#12191e; --paper:#1a242b; --ink:#e6edf0; --muted:#9fb0ba; --line:#2c3a43;
-  --accent:#6fbcd6; --accent-soft:#1d3440; --warm:#e09a72; color-scheme:dark}}
+  --bg:#271c22; --paper:#33252d; --ink:#f7e8ee; --muted:#c8a9b6;
+  --pink:#ff9bb5; --pink-soft:#4a2c39; --mint:#86d6c3; --mint-soft:#203d37;
+  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#12191e; --paper:#1a242b; --ink:#e6edf0; --muted:#9fb0ba; --line:#2c3a43;
-  --accent:#6fbcd6; --accent-soft:#1d3440; --warm:#e09a72; color-scheme:dark}
+  --bg:#271c22; --paper:#33252d; --ink:#f7e8ee; --muted:#c8a9b6;
+  --pink:#ff9bb5; --pink-soft:#4a2c39; --mint:#86d6c3; --mint-soft:#203d37;
+  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
-.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:15px;line-height:1.8;
+  background-image:radial-gradient(var(--dot) 1.6px,transparent 1.7px);background-size:22px 22px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.35}
-header{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:2px dashed var(--line)}
-.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
-h1{font-size:30px}
-.lead{color:var(--muted);margin:0}
-.route{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-weight:500}
-.route .pin{background:var(--accent-soft);color:var(--accent);padding:3px 12px;border-radius:999px;font-size:14px}
-.route .dash{flex:1;min-width:40px;border-top:2px dotted var(--accent);opacity:.6}
-.route small{color:var(--muted);font-size:12px;width:100%}
+b{font-weight:700}
+
+/* 表紙 */
+.cover{position:relative;background:var(--paper);border-radius:28px;padding:30px 24px 24px;text-align:center;
+  outline:2px dashed var(--pink);outline-offset:-10px;box-shadow:0 8px 0 var(--pink-soft);overflow:hidden}
+.cover .ribbon{display:inline-block;background:var(--pink);color:var(--paper);font-weight:700;font-size:12px;letter-spacing:.18em;
+  padding:4px 16px;border-radius:999px}
+.cover h1{font-size:32px;font-weight:900;margin-top:12px;color:var(--ink)}
+.cover h1 em{font-style:normal;color:var(--pink)}
+.cover .lead{font-family:var(--hand);color:var(--muted);margin:8px auto 0;max-width:30em;font-size:14px}
+.cover svg.deco{position:absolute;width:64px;height:64px}
+.cover .d1{top:-8px;left:-6px;transform:rotate(-12deg)}
+.cover .d2{bottom:-10px;right:-4px;transform:rotate(14deg)}
+.route{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.route .pin{background:var(--mint-soft);color:var(--mint);font-weight:700;padding:4px 14px;border-radius:999px;font-size:14px}
+.route .car{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px}
+.route svg{width:34px;height:20px}
+
+/* 見出し */
 section{display:flex;flex-direction:column;gap:14px}
-h2{font-size:20px;display:flex;align-items:baseline;gap:10px}
-h2 span{font-size:12px;color:var(--muted);font-family:var(--body);font-weight:500}
-.drive{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.drive div{display:flex;flex-direction:column;min-width:0}
-.drive b{font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums}
-.drive small{color:var(--muted);font-size:12px}
-.drive p{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
-.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.tl li{display:grid;grid-template-columns:58px 1fr;gap:14px;position:relative;padding-bottom:18px}
-.tl li::before{content:"";position:absolute;left:72px;top:10px;bottom:-4px;border-left:2px solid var(--line)}
-.tl li:last-child::before{display:none}
-.time{font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);font-size:14px;padding-top:2px;text-align:right}
-.ev{position:relative;padding-left:18px;min-width:0}
-.ev::before{content:"";position:absolute;left:-7px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
-.ev.spot::before{background:var(--accent);border-color:var(--accent)}
-.ev h3{font-size:16px}
-.ev p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.card{margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
-.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--warm);letter-spacing:.06em}
-.card p{color:var(--ink);margin:0}
-dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:0;font-size:13px}
-dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
-.card a{color:var(--accent);font-size:13px;font-weight:700;text-decoration:none}
-.card a:hover,.card a:focus-visible{text-decoration:underline}
-.map{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;overflow-x:auto}
+h2{font-size:20px;font-weight:900;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--pink);box-shadow:18px 0 0 -3px var(--butter),32px 0 0 -5px var(--mint);margin-right:28px}
+h2 span{font-size:12px;color:var(--muted);font-weight:500}
+
+/* ドライブ */
+.drive{background:var(--paper);border-radius:22px;padding:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
+  border:2px solid var(--line)}
+.stat{background:var(--butter-soft);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;align-items:center;min-width:0}
+.stat small{color:var(--muted);font-size:11px;text-align:center}
+.stat b{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums}
+.drive p{grid-column:1/-1;margin:4px 0 0;font-size:13px;color:var(--muted)}
+
+/* タイムライン */
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;position:relative}
+.tl::before{content:"";position:absolute;left:31px;top:12px;bottom:12px;border-left:3px dotted var(--line)}
+.tl li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:start;position:relative}
+.time{justify-self:center;background:var(--paper);border:2px solid var(--line);color:var(--muted);border-radius:999px;
+  font-weight:700;font-size:13px;padding:2px 8px;font-variant-numeric:tabular-nums;position:relative;z-index:1}
+.spot .time{background:var(--pink);border-color:var(--pink);color:var(--paper)}
+.plain h3{font-size:15px}
+.plain p{margin:0;color:var(--muted);font-size:14px}
+.card{background:var(--paper);border-radius:22px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;
+  outline:2px dashed var(--line);outline-offset:-7px;box-shadow:0 5px 0 var(--pink-soft)}
+.card.mint{box-shadow:0 5px 0 var(--mint-soft)}
+.card.butter{box-shadow:0 5px 0 var(--butter-soft)}
+.card h3{font-size:17px;font-weight:900}
+.card p{margin:0;font-size:14px}
+.sticker{align-self:flex-start;font-size:12px;font-weight:700;padding:2px 12px;border-radius:999px;background:var(--pink-soft);color:var(--pink);transform:rotate(-2deg)}
+.mint .sticker{background:var(--mint-soft);color:var(--mint)}
+.butter .sticker{background:var(--butter-soft);color:var(--ink)}
+dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;margin:0;font-size:13px}
+dt{color:var(--muted)} dd{margin:0;overflow-wrap:anywhere}
+.card a{align-self:flex-start;color:var(--paper);background:var(--ink);font-size:12px;font-weight:700;text-decoration:none;padding:5px 14px;border-radius:999px}
+.card a:hover,.card a:focus-visible{background:var(--pink)}
+
+/* 地図 */
+.map{background:var(--paper);border-radius:22px;padding:12px;border:2px solid var(--line);overflow-x:auto}
 .map svg{display:block;width:100%;min-width:320px;height:auto}
-.notes{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:14px}
-.check{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
-.check label{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:14px}
-.check input{accent-color:var(--accent);width:18px;height:18px}
+
+/* メモ */
+.memo{background:var(--butter-soft);border-radius:4px 22px 22px 22px;padding:16px 18px 16px 20px;position:relative}
+.memo::before{content:"";position:absolute;top:-10px;left:24px;width:70px;height:20px;background:var(--pink-soft);opacity:.9;transform:rotate(-4deg);border-radius:3px}
+.memo ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:14px;font-family:var(--hand)}
+
+/* 持ちもの */
+.check{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.check label{display:flex;gap:10px;align-items:center;cursor:pointer;font-size:14px;background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:8px 14px}
+.check input{appearance:none;-webkit-appearance:none;margin:0;flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--pink);background:var(--paper);display:grid;place-content:center;cursor:pointer}
+.check input::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--pink);transform:scale(0);transition:transform .15s}
+.check input:checked::after{transform:scale(1)}
 .check input:checked+span{color:var(--muted);text-decoration:line-through}
-input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-footer{font-size:12px;color:var(--muted);border-top:2px dashed var(--line);padding-top:14px}
+.check label:has(input:checked){background:var(--pink-soft);border-color:var(--pink-soft)}
+input:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+footer{font-size:12px;color:var(--muted);text-align:center;font-family:var(--hand)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:480px){
-  h1{font-size:25px}
+  .cover h1{font-size:26px}
   .drive{grid-template-columns:1fr 1fr}
-  .tl li{grid-template-columns:46px 1fr;gap:10px}
-  .tl li::before{left:56px}
+  .drive .stat:last-of-type{grid-column:1/-1}
+  .tl li{grid-template-columns:54px minmax(0,1fr);gap:10px}
+  .tl::before{left:26px}
   .check{grid-template-columns:1fr}
 }
 </style>
@@ -80,65 +119,70 @@ footer{font-size:12px;color:var(--muted);border-top:2px dashed var(--line);paddi
 <body>
 
 <div class="wrap">
-<header>
-  <div class="eyebrow">KOBE · 日帰りドライブ</div>
-  <h1>神戸おさんぽ旅のしおり</h1>
-  <p class="lead">雑貨とケーキと、旧居留地の石造りの街並み。行きたい4か所は全部歩いて回れる範囲にあります。</p>
-  <div class="route"><span class="pin">愛知・植田</span><span class="dash"></span><span class="pin">神戸・旧居留地</span>
-  <small>片道 約200km／高速で約2時間40分（渋滞なしの目安）</small></div>
+<header class="cover">
+  <svg class="deco d1" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 54 C10 38 6 26 14 18 c7-7 15-3 18 4 c3-7 11-11 18-4 c8 8 4 20-18 36z" fill="var(--pink-soft)"/></svg>
+  <svg class="deco d2" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l6 17h18l-14 11 5 18-15-10-15 10 5-18L8 23h18z" fill="var(--butter-soft)"/></svg>
+  <span class="ribbon">KOBE TRIP</span>
+  <h1>神戸<em>おさんぽ</em>旅の<br>しおり</h1>
+  <p class="lead">かわいい雑貨とケーキと、旧居留地の綺麗な街並み。行きたい4か所は、ぜんぶ歩いて回れる距離です。</p>
+  <div class="route">
+    <span class="pin">愛知・植田</span>
+    <span class="car"><svg viewBox="0 0 34 20" aria-hidden="true"><rect x="2" y="7" width="30" height="8" rx="4" fill="var(--pink)"/><path d="M8 7 L12 2 H22 L27 7z" fill="var(--pink)"/><rect x="13" y="3.5" width="8" height="3.5" rx="1" fill="var(--paper)"/><circle cx="9" cy="16" r="3" fill="var(--ink)"/><circle cx="25" cy="16" r="3" fill="var(--ink)"/></svg>約200km</span>
+    <span class="pin">神戸・旧居留地</span>
+  </div>
 </header>
 
 <section>
-  <h2>行きの道 <span>車</span></h2>
+  <h2>行きの道 <span>車でドライブ</span></h2>
   <div class="drive">
-    <div><small>出発</small><b>7:30</b></div>
-    <div><small>神戸着</small><b>10:30</b></div>
-    <div><small>高速料金（片道・普通車）</small><b>約¥5,500</b></div>
-    <p>植田IC（名二環）→ 伊勢湾岸道 → 新名神 → 名神 → 阪神高速3号神戸線 → 京橋出口。休憩は新名神の<b>土山SA</b>か<b>宝塚北SA</b>（スイーツが充実）がおすすめ。料金・時間はETC・曜日で変わるのでナビで最終確認を。</p>
+    <div class="stat"><small>出発</small><b>7:30</b></div>
+    <div class="stat"><small>神戸着</small><b>10:30</b></div>
+    <div class="stat"><small>高速代（片道）</small><b>約¥5,500</b></div>
+    <p>植田IC（名二環）→ 伊勢湾岸道 → 新名神 → 名神 → 阪神高速3号神戸線 → 京橋出口。片道 約2時間40分（渋滞なしの目安）。休憩は新名神の<b>土山SA</b>か、スイーツが多い<b>宝塚北SA</b>で。料金・時間はETCや曜日で変わるので、ナビで最終確認を。</p>
   </div>
 </section>
 
 <section>
-  <h2>この日の流れ <span>徒歩で回ります</span></h2>
+  <h2>この日の流れ <span>ここからは徒歩</span></h2>
   <ol class="tl">
-    <li><div class="time">10:30</div><div class="ev"><h3>旧居留地周辺に駐車</h3>
+    <li class="plain"><span class="time">10:30</span><div><h3>旧居留地周辺に駐車</h3>
       <p>神戸BALに専用駐車場はなし。大丸神戸店の駐車場（買い物で割引あり）か、周辺のコインパーキングへ。</p></div></li>
 
-    <li><div class="time">10:40</div><div class="ev spot"><h3>旧居留地 朝のおさんぽ</h3>
-      <div class="card"><span class="tag">綺麗な街並み</span>
-        <p>お店が開く11時まで、人が少ない時間に写真を。石造りの<b>旧居留地十五番館</b>、<b>商船三井ビルディング</b>、大丸のまわりの回廊がフォトスポット。</p>
-      </div></div></li>
+    <li class="spot"><span class="time">10:40</span><div class="card mint"><span class="sticker">綺麗な街並み</span>
+      <h3>旧居留地 朝のおさんぽ</h3>
+      <p>お店が開く11時まで、人が少ない時間に写真を。石造りの<b>旧居留地十五番館</b>、<b>商船三井ビルディング</b>、大丸のまわりの回廊がフォトスポット。</p>
+    </div></li>
 
-    <li><div class="time">11:00</div><div class="ev spot"><h3>神戸BAL</h3>
-      <div class="card"><span class="tag">バッグ・可愛い雑貨</span>
-        <dl><dt>場所</dt><dd>中央区三宮町3-6-1</dd><dt>営業</dt><dd>11:00–20:00（不定休）</dd></dl>
-        <a href="https://www.google.com/maps/search/?api=1&query=神戸BAL" target="_blank" rel="noopener">地図をひらく →</a>
-      </div></div></li>
+    <li class="spot"><span class="time">11:00</span><div class="card"><span class="sticker">バッグ・可愛い雑貨</span>
+      <h3>神戸BAL</h3>
+      <dl><dt>場所</dt><dd>中央区三宮町3-6-1</dd><dt>営業</dt><dd>11:00–20:00（不定休）</dd></dl>
+      <a href="https://www.google.com/maps/search/?api=1&query=神戸BAL" target="_blank" rel="noopener">地図をひらく</a>
+    </div></li>
 
-    <li><div class="time">12:30</div><div class="ev"><h3>ランチ</h3>
-      <p>旧居留地のカフェか、すぐ北の南京町で食べ歩き。ケーキの分はお腹を空けておく。</p></div></li>
+    <li class="plain"><span class="time">12:30</span><div><h3>ランチ</h3>
+      <p>旧居留地のカフェか、すぐ北の南京町で食べ歩き。ケーキの分はお腹を空けておいてね。</p></div></li>
 
-    <li><div class="time">13:30</div><div class="ev spot"><h3>ATELIER</h3>
-      <div class="card"><span class="tag">お皿・雑貨</span>
-        <p>明治時代の洋館「海岸ビルヂング」の1階。建物自体も見どころ。旧居留地から南西へ歩いて約7分。</p>
-        <dl><dt>場所</dt><dd>中央区海岸通3-1-5 海岸ビルヂング 北側1F</dd><dt>営業</dt><dd>11:00–19:00（<b>水曜定休</b>）</dd></dl>
-        <a href="https://www.google.com/maps/search/?api=1&query=海岸ビルヂング+神戸" target="_blank" rel="noopener">地図をひらく →</a>
-      </div></div></li>
+    <li class="spot"><span class="time">13:30</span><div class="card butter"><span class="sticker">お皿・雑貨</span>
+      <h3>ATELIER</h3>
+      <p>明治時代の洋館「海岸ビルヂング」の1階。建物そのものもかわいい。旧居留地から南西へ歩いて約7分。</p>
+      <dl><dt>場所</dt><dd>中央区海岸通3-1-5 海岸ビルヂング 北側1F</dd><dt>営業</dt><dd>11:00–19:00（<b>水曜定休</b>）</dd></dl>
+      <a href="https://www.google.com/maps/search/?api=1&query=海岸ビルヂング+神戸" target="_blank" rel="noopener">地図をひらく</a>
+    </div></li>
 
-    <li><div class="time">14:30</div><div class="ev"><h3>旧居留地 ぶらぶら</h3>
+    <li class="plain"><span class="time">14:30</span><div><h3>旧居留地 ぶらぶら</h3>
       <p>海岸通から旧居留地へ戻りながら、気になったお店をのぞく。</p></div></li>
 
-    <li><div class="time">15:30</div><div class="ev spot"><h3>OFFICINE UNIVERSELLE BULY</h3>
-      <div class="card"><span class="tag">ケーキ・かわいい石鹸</span>
-        <p>日本初のカフェ併設店。ブティックとカフェが隣り合っていて、お茶のあとに石鹸やハンドクリームを選べる。焼き菓子は¥660〜、ドリンクは¥1,100〜。</p>
-        <dl><dt>場所</dt><dd>中央区三宮町3-5-1 神戸BAL ANNEX 1F（BALのすぐ隣）</dd><dt>営業</dt><dd>11:00–20:00（カフェLO 19:00）</dd><dt>電話</dt><dd>078-335-7238</dd></dl>
-        <a href="https://www.google.com/maps/search/?api=1&query=ビュリー+神戸" target="_blank" rel="noopener">地図をひらく →</a>
-      </div></div></li>
+    <li class="spot"><span class="time">15:30</span><div class="card"><span class="sticker">ケーキ・かわいい石鹸</span>
+      <h3>OFFICINE UNIVERSELLE BULY</h3>
+      <p>日本で初めてのカフェ併設店。ブティックとカフェがとなり合っていて、お茶のあとに石鹸やハンドクリームを選べる。焼き菓子は¥660〜、ドリンクは¥1,100〜。</p>
+      <dl><dt>場所</dt><dd>中央区三宮町3-5-1 神戸BAL ANNEX 1F（BALのすぐ隣）</dd><dt>営業</dt><dd>11:00–20:00（カフェLO 19:00）</dd><dt>電話</dt><dd>078-335-7238</dd></dl>
+      <a href="https://www.google.com/maps/search/?api=1&query=ビュリー+神戸" target="_blank" rel="noopener">地図をひらく</a>
+    </div></li>
 
-    <li><div class="time">17:00</div><div class="ev"><h3>神戸を出発</h3>
+    <li class="plain"><span class="time">17:00</span><div><h3>神戸を出発</h3>
       <p>夕方の阪神高速・名神は混みやすいので、余裕をもって。</p></div></li>
 
-    <li><div class="time">20:00</div><div class="ev"><h3>植田に到着</h3><p>おつかれさま！</p></div></li>
+    <li class="plain"><span class="time">20:00</span><div><h3>植田に到着</h3><p>おつかれさま！</p></div></li>
   </ol>
 </section>
 
@@ -146,29 +190,29 @@ footer{font-size:12px;color:var(--muted);border-top:2px dashed var(--line);paddi
   <h2>歩く範囲 <span>だいたいの位置関係</span></h2>
   <div class="map">
     <svg viewBox="0 0 400 230" role="img" aria-label="スポットの位置関係図">
-      <rect x="0" y="0" width="400" height="230" fill="var(--paper)"/>
-      <rect x="0" y="196" width="400" height="34" fill="var(--accent-soft)"/>
-      <text x="200" y="218" text-anchor="middle" font-size="11" fill="var(--accent)">神戸港 ↓</text>
-      <line x1="20" y1="34" x2="380" y2="34" stroke="var(--line)" stroke-width="6"/>
+      <rect x="0" y="0" width="400" height="230" rx="14" fill="var(--paper)"/>
+      <path d="M0 196 Q50 186 100 196 T200 196 T300 196 T400 196 V230 H0z" fill="var(--mint-soft)"/>
+      <text x="200" y="220" text-anchor="middle" font-size="11" fill="var(--mint)">神戸港</text>
+      <line x1="20" y1="34" x2="380" y2="34" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
       <text x="24" y="24" font-size="11" fill="var(--muted)">JR・阪神 元町駅</text>
-      <rect x="170" y="70" width="190" height="100" rx="10" fill="none" stroke="var(--accent)" stroke-dasharray="5 4"/>
-      <text x="350" y="162" text-anchor="end" font-size="11" fill="var(--accent)">旧居留地</text>
-      <circle cx="210" cy="92" r="7" fill="var(--warm)"/><text x="222" y="96" font-size="12" fill="var(--ink)">神戸BAL</text>
-      <circle cx="210" cy="122" r="7" fill="var(--warm)"/><text x="222" y="126" font-size="12" fill="var(--ink)">BULY（BAL ANNEX）</text>
-      <circle cx="80" cy="168" r="7" fill="var(--warm)"/><text x="40" y="190" font-size="12" fill="var(--ink)">ATELIER（海岸ビル）</text>
-      <path d="M200 128 Q140 150 88 164" fill="none" stroke="var(--muted)" stroke-dasharray="3 4"/>
-      <text x="120" y="138" font-size="11" fill="var(--muted)">徒歩 約7分</text>
+      <rect x="170" y="66" width="200" height="104" rx="22" fill="var(--pink-soft)" opacity=".55"/>
+      <text x="358" y="160" text-anchor="end" font-size="11" fill="var(--pink)">旧居留地</text>
+      <circle cx="200" cy="92" r="8" fill="var(--pink)"/><text x="214" y="96" font-size="12" fill="var(--ink)">神戸BAL</text>
+      <circle cx="200" cy="124" r="8" fill="var(--pink)"/><text x="214" y="128" font-size="12" fill="var(--ink)">BULY（BAL ANNEX）</text>
+      <circle cx="80" cy="166" r="8" fill="var(--butter)"/><text x="36" y="188" font-size="12" fill="var(--ink)">ATELIER（海岸ビル）</text>
+      <path d="M192 130 Q140 150 90 162" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>
+      <text x="112" y="140" font-size="11" fill="var(--muted)">徒歩 約7分</text>
     </svg>
   </div>
 </section>
 
 <section>
   <h2>メモ</h2>
-  <ul class="notes">
+  <div class="memo"><ul>
     <li>ATELIERは<b>水曜定休</b>。日程が水曜なら別の日に。</li>
-    <li>お店の営業時間は掲載情報の目安です。前日に公式SNSやGoogleマップで確認を。</li>
+    <li>お店の営業時間は掲載情報の目安。前日に公式SNSやGoogleマップで確認を。</li>
     <li>お皿を買うなら、包み用のタオルや紙袋を車に積んでおくと安心。</li>
-  </ul>
+  </ul></div>
 </section>
 
 <section>
@@ -183,7 +227,7 @@ footer{font-size:12px;color:var(--muted);border-top:2px dashed var(--line);paddi
   </ul>
 </section>
 
-<footer>営業情報の出典：神戸BAL・ビュリー神戸店・ATELIER 神戸の各掲載情報（2026年11月時点で確認できたもの）。</footer>
+<footer>営業情報は神戸BAL・ビュリー神戸店・ATELIER 神戸の各掲載情報より（2026年11月時点）</footer>
 </div>
 
 <script>
