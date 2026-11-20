@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>神戸おさんぽ旅のしおり</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* layout: 1カラムの冊子。時刻の縦タイムライン＋最後に持ち物チェック */
+:root{
+  --bg:#f3f6f7; --paper:#ffffff; --ink:#1f2a33; --muted:#5e6b75;
+  --line:#d6e0e4; --accent:#1f6f8b; --accent-soft:#e2f0f4; --warm:#b5653b;
+  --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12191e; --paper:#1a242b; --ink:#e6edf0; --muted:#9fb0ba; --line:#2c3a43;
+  --accent:#6fbcd6; --accent-soft:#1d3440; --warm:#e09a72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12191e; --paper:#1a242b; --ink:#e6edf0; --muted:#9fb0ba; --line:#2c3a43;
+  --accent:#6fbcd6; --accent-soft:#1d3440; --warm:#e09a72; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.35}
+header{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:2px dashed var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+h1{font-size:30px}
+.lead{color:var(--muted);margin:0}
+.route{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-weight:500}
+.route .pin{background:var(--accent-soft);color:var(--accent);padding:3px 12px;border-radius:999px;font-size:14px}
+.route .dash{flex:1;min-width:40px;border-top:2px dotted var(--accent);opacity:.6}
+.route small{color:var(--muted);font-size:12px;width:100%}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:20px;display:flex;align-items:baseline;gap:10px}
+h2 span{font-size:12px;color:var(--muted);font-family:var(--body);font-weight:500}
+.drive{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.drive div{display:flex;flex-direction:column;min-width:0}
+.drive b{font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums}
+.drive small{color:var(--muted);font-size:12px}
+.drive p{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:58px 1fr;gap:14px;position:relative;padding-bottom:18px}
+.tl li::before{content:"";position:absolute;left:72px;top:10px;bottom:-4px;border-left:2px solid var(--line)}
+.tl li:last-child::before{display:none}
+.time{font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);font-size:14px;padding-top:2px;text-align:right}
+.ev{position:relative;padding-left:18px;min-width:0}
+.ev::before{content:"";position:absolute;left:-7px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.ev.spot::before{background:var(--accent);border-color:var(--accent)}
+.ev h3{font-size:16px}
+.ev p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.card{margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--warm);letter-spacing:.06em}
+.card p{color:var(--ink);margin:0}
+dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:0;font-size:13px}
+dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.card a{color:var(--accent);font-size:13px;font-weight:700;text-decoration:none}
+.card a:hover,.card a:focus-visible{text-decoration:underline}
+.map{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;overflow-x:auto}
+.map svg{display:block;width:100%;min-width:320px;height:auto}
+.notes{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.check{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
+.check label{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:14px}
+.check input{accent-color:var(--accent);width:18px;height:18px}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{font-size:12px;color:var(--muted);border-top:2px dashed var(--line);padding-top:14px}
+@media (max-width:480px){
+  h1{font-size:25px}
+  .drive{grid-template-columns:1fr 1fr}
+  .tl li{grid-template-columns:46px 1fr;gap:10px}
+  .tl li::before{left:56px}
+  .check{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">KOBE · 日帰りドライブ</div>
+  <h1>神戸おさんぽ旅のしおり</h1>
+  <p class="lead">雑貨とケーキと、旧居留地の石造りの街並み。行きたい4か所は全部歩いて回れる範囲にあります。</p>
+  <div class="route"><span class="pin">愛知・植田</span><span class="dash"></span><span class="pin">神戸・旧居留地</span>
+  <small>片道 約200km／高速で約2時間40分（渋滞なしの目安）</small></div>
+</header>
+
+<section>
+  <h2>行きの道 <span>車</span></h2>
+  <div class="drive">
+    <div><small>出発</small><b>7:30</b></div>
+    <div><small>神戸着</small><b>10:30</b></div>
+    <div><small>高速料金（片道・普通車）</small><b>約¥5,500</b></div>
+    <p>植田IC（名二環）→ 伊勢湾岸道 → 新名神 → 名神 → 阪神高速3号神戸線 → 京橋出口。休憩は新名神の<b>土山SA</b>か<b>宝塚北SA</b>（スイーツが充実）がおすすめ。料金・時間はETC・曜日で変わるのでナビで最終確認を。</p>
+  </div>
+</section>
+
+<section>
+  <h2>この日の流れ <span>徒歩で回ります</span></h2>
+  <ol class="tl">
+    <li><div class="time">10:30</div><div class="ev"><h3>旧居留地周辺に駐車</h3>
+      <p>神戸BALに専用駐車場はなし。大丸神戸店の駐車場（買い物で割引あり）か、周辺のコインパーキングへ。</p></div></li>
+
+    <li><div class="time">10:40</div><div class="ev spot"><h3>旧居留地 朝のおさんぽ</h3>
+      <div class="card"><span class="tag">綺麗な街並み</span>
+        <p>お店が開く11時まで、人が少ない時間に写真を。石造りの<b>旧居留地十五番館</b>、<b>商船三井ビルディング</b>、大丸のまわりの回廊がフォトスポット。</p>
+      </div></div></li>
+
+    <li><div class="time">11:00</div><div class="ev spot"><h3>神戸BAL</h3>
+      <div class="card"><span class="tag">バッグ・可愛い雑貨</span>
+        <dl><dt>場所</dt><dd>中央区三宮町3-6-1</dd><dt>営業</dt><dd>11:00–20:00（不定休）</dd></dl>
+        <a href="https://www.google.com/maps/search/?api=1&query=神戸BAL" target="_blank" rel="noopener">地図をひらく →</a>
+      </div></div></li>
+
+    <li><div class="time">12:30</div><div class="ev"><h3>ランチ</h3>
+      <p>旧居留地のカフェか、すぐ北の南京町で食べ歩き。ケーキの分はお腹を空けておく。</p></div></li>
+
+    <li><div class="time">13:30</div><div class="ev spot"><h3>ATELIER</h3>
+      <div class="card"><span class="tag">お皿・雑貨</span>
+        <p>明治時代の洋館「海岸ビルヂング」の1階。建物自体も見どころ。旧居留地から南西へ歩いて約7分。</p>
+        <dl><dt>場所</dt><dd>中央区海岸通3-1-5 海岸ビルヂング 北側1F</dd><dt>営業</dt><dd>11:00–19:00（<b>水曜定休</b>）</dd></dl>
+        <a href="https://www.google.com/maps/search/?api=1&query=海岸ビルヂング+神戸" target="_blank" rel="noopener">地図をひらく →</a>
+      </div></div></li>
+
+    <li><div class="time">14:30</div><div class="ev"><h3>旧居留地 ぶらぶら</h3>
+      <p>海岸通から旧居留地へ戻りながら、気になったお店をのぞく。</p></div></li>
+
+    <li><div class="time">15:30</div><div class="ev spot"><h3>OFFICINE UNIVERSELLE BULY</h3>
+      <div class="card"><span class="tag">ケーキ・かわいい石鹸</span>
+        <p>日本初のカフェ併設店。ブティックとカフェが隣り合っていて、お茶のあとに石鹸やハンドクリームを選べる。焼き菓子は¥660〜、ドリンクは¥1,100〜。</p>
+        <dl><dt>場所</dt><dd>中央区三宮町3-5-1 神戸BAL ANNEX 1F（BALのすぐ隣）</dd><dt>営業</dt><dd>11:00–20:00（カフェLO 19:00）</dd><dt>電話</dt><dd>078-335-7238</dd></dl>
+        <a href="https://www.google.com/maps/search/?api=1&query=ビュリー+神戸" target="_blank" rel="noopener">地図をひらく →</a>
+      </div></div></li>
+
+    <li><div class="time">17:00</div><div class="ev"><h3>神戸を出発</h3>
+      <p>夕方の阪神高速・名神は混みやすいので、余裕をもって。</p></div></li>
+
+    <li><div class="time">20:00</div><div class="ev"><h3>植田に到着</h3><p>おつかれさま！</p></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2>歩く範囲 <span>だいたいの位置関係</span></h2>
+  <div class="map">
+    <svg viewBox="0 0 400 230" role="img" aria-label="スポットの位置関係図">
+      <rect x="0" y="0" width="400" height="230" fill="var(--paper)"/>
+      <rect x="0" y="196" width="400" height="34" fill="var(--accent-soft)"/>
+      <text x="200" y="218" text-anchor="middle" font-size="11" fill="var(--accent)">神戸港 ↓</text>
+      <line x1="20" y1="34" x2="380" y2="34" stroke="var(--line)" stroke-width="6"/>
+      <text x="24" y="24" font-size="11" fill="var(--muted)">JR・阪神 元町駅</text>
+      <rect x="170" y="70" width="190" height="100" rx="10" fill="none" stroke="var(--accent)" stroke-dasharray="5 4"/>
+      <text x="350" y="162" text-anchor="end" font-size="11" fill="var(--accent)">旧居留地</text>
+      <circle cx="210" cy="92" r="7" fill="var(--warm)"/><text x="222" y="96" font-size="12" fill="var(--ink)">神戸BAL</text>
+      <circle cx="210" cy="122" r="7" fill="var(--warm)"/><text x="222" y="126" font-size="12" fill="var(--ink)">BULY（BAL ANNEX）</text>
+      <circle cx="80" cy="168" r="7" fill="var(--warm)"/><text x="40" y="190" font-size="12" fill="var(--ink)">ATELIER（海岸ビル）</text>
+      <path d="M200 128 Q140 150 88 164" fill="none" stroke="var(--muted)" stroke-dasharray="3 4"/>
+      <text x="120" y="138" font-size="11" fill="var(--muted)">徒歩 約7分</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>メモ</h2>
+  <ul class="notes">
+    <li>ATELIERは<b>水曜定休</b>。日程が水曜なら別の日に。</li>
+    <li>お店の営業時間は掲載情報の目安です。前日に公式SNSやGoogleマップで確認を。</li>
+    <li>お皿を買うなら、包み用のタオルや紙袋を車に積んでおくと安心。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>持ちもの <span>タップでチェック</span></h2>
+  <ul class="check" id="check">
+    <li><label><input type="checkbox" id="c1"><span>免許証・ETCカード</span></label></li>
+    <li><label><input type="checkbox" id="c2"><span>お財布・スマホ充電器</span></label></li>
+    <li><label><input type="checkbox" id="c3"><span>歩きやすい靴</span></label></li>
+    <li><label><input type="checkbox" id="c4"><span>エコバッグ（大きめ）</span></label></li>
+    <li><label><input type="checkbox" id="c5"><span>お皿の緩衝材・タオル</span></label></li>
+    <li><label><input type="checkbox" id="c6"><span>羽織るもの（海風が冷たい）</span></label></li>
+  </ul>
+</section>
+
+<footer>営業情報の出典：神戸BAL・ビュリー神戸店・ATELIER 神戸の各掲載情報（2026年11月時点で確認できたもの）。</footer>
+</div>
+
+<script>
+document.querySelectorAll('#check input').forEach(function(el){
+  try{ if(localStorage.getItem('kobe-'+el.id)==='1') el.checked=true; }catch(e){}
+  el.addEventListener('change',function(){ try{ localStorage.setItem('kobe-'+el.id, el.checked?'1':'0'); }catch(e){} });
+});
+</script>
+</body>
+</html>
