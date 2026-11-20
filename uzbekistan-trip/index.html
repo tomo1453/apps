@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E8C83">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ウズベキスタン">
+<meta name="format-detection" content="telephone=no">
+<title>ウズベキスタン旅のしおり</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%8C%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --teal: #0E8C83;
+  --teal-dark: #0A6B64;
+  --teal-light: #E3F6F3;
+  --teal-mid: #9FDCD4;
+  --gold: #F2B632;
+  --gold-dark: #B9820C;
+  --gold-light: #FFF5D9;
+  --red: #E0473E;
+  --red-light: #FDECEA;
+  --ink: #1D2B2A;
+  --sub: #5D706E;
+  --line: #D8E9E6;
+  --bg: #F3FAF8;
+  --card: #FFFFFF;
+  --radius: 18px;
+  --tabh: 64px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; }
+
+/* ===== ヘッダー ===== */
+header.top {
+  position: sticky; top: 0; z-index: 10;
+  background: linear-gradient(135deg, var(--teal) 0%, #13A89C 60%, #19B5A6 100%);
+  color: #fff;
+  padding: calc(env(safe-area-inset-top) + 12px) 16px 14px;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 6px 18px rgba(14,140,131,.25);
+}
+.top-title { font-size: 13px; opacity: .9; letter-spacing: .04em; display: flex; justify-content: space-between; align-items: center; }
+.top-title .tz-btn { background: rgba(255,255,255,.18); border: 0; border-radius: 999px; padding: 2px 10px; font-size: 12px; color: #fff; }
+.countdown { font-size: 26px; font-weight: 800; margin-top: 2px; letter-spacing: .02em; }
+.countdown b { color: var(--gold); font-size: 38px; margin: 0 2px; text-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.top-sub { font-size: 13px; opacity: .95; margin-top: 2px; }
+.tz-note {
+  display: none; margin-top: 10px; background: rgba(255,255,255,.16); border-radius: 12px;
+  padding: 8px 12px; font-size: 13px;
+}
+.tz-note.show { display: block; }
+
+/* ===== メイン ===== */
+main { padding: 14px 14px calc(var(--tabh) + env(safe-area-inset-bottom) + 24px); max-width: 640px; margin: 0 auto; }
+section.view { display: none; }
+section.view.active { display: block; }
+h2.sec { font-size: 15px; color: var(--teal-dark); margin: 18px 4px 8px; display: flex; align-items: center; gap: 6px; }
+h2.sec:first-child { margin-top: 4px; }
+
+.card {
+  background: var(--card); border-radius: var(--radius); margin-bottom: 12px;
+  box-shadow: 0 2px 0 var(--line), 0 4px 14px rgba(29,43,42,.05);
+  border: 2px solid transparent; overflow: hidden;
+}
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--teal-light); color: var(--teal-dark); white-space: nowrap;
+}
+.pill.gold { background: var(--gold-light); color: var(--gold-dark); }
+.pill.red { background: var(--red); color: #fff; }
+.pill.gray { background: #ECEFEF; color: #6B7A78; }
+
+/* 日程カード */
+.day-head {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px; width: 100%;
+  background: none; border: 0; text-align: left; cursor: pointer;
+}
+.day-date {
+  flex: 0 0 56px; height: 56px; border-radius: 14px; background: var(--teal-light); color: var(--teal-dark);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1;
+}
+.day-date .md { font-size: 17px; font-weight: 800; }
+.day-date .dow { font-size: 11px; font-weight: 700; }
+.day-date.sat .dow { color: #2F6FD0; }
+.day-date.sun .dow { color: var(--red); }
+.day-main { flex: 1; min-width: 0; }
+.day-title { font-weight: 800; font-size: 16px; }
+.day-meta { font-size: 12px; color: var(--sub); display: flex; gap: 6px; flex-wrap: wrap; margin-top: 3px; align-items: center; }
+.chev { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: grid; place-items: center; font-size: 13px; transition: transform .2s; }
+.card.open .chev { transform: rotate(180deg); }
+.day-body { display: none; padding: 0 14px 14px; }
+.card.open .day-body { display: block; }
+
+.card.today { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(242,182,50,.25), 0 6px 18px rgba(242,182,50,.25); }
+.card.today .day-date { background: var(--gold); color: #fff; }
+.card.today .day-date .dow { color: #fff; }
+.card.past { opacity: .62; }
+.today-badge { background: var(--gold); color: #fff; }
+.card.has-warn .day-date { box-shadow: inset 0 0 0 2px var(--red); }
+
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 3px dotted var(--teal-mid); margin-left: 6px; }
+.timeline li { position: relative; padding: 4px 0 10px 16px; }
+.timeline li::before {
+  content: ""; position: absolute; left: -8px; top: 10px; width: 13px; height: 13px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--teal);
+}
+.timeline li.flight::before, .timeline li.train::before { border-color: var(--gold); background: var(--gold-light); }
+.timeline li.warn::before { border-color: var(--red); background: var(--red); }
+.tl-time { font-weight: 800; color: var(--teal-dark); font-size: 14px; margin-right: 6px; font-variant-numeric: tabular-nums; }
+.tl-text { font-size: 15px; }
+.tl-note { font-size: 12.5px; color: var(--sub); margin-top: 2px; }
+.warn-box {
+  background: var(--red-light); color: var(--red); border: 2px solid var(--red); border-radius: 12px;
+  padding: 8px 10px; font-weight: 700; font-size: 14px; margin-top: 4px;
+}
+.warn-box::before { content: "⚠️ "; }
+.stay-row {
+  display: flex; align-items: center; gap: 8px; background: var(--gold-light); border-radius: 12px;
+  padding: 8px 12px; margin-top: 6px; font-size: 14px;
+}
+.stay-row b { color: var(--gold-dark); }
+.stay-row button { margin-left: auto; }
+
+/* 移動 */
+.move { padding: 14px; }
+.move-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.move-name { font-weight: 800; font-size: 17px; }
+.move-route { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.move-pt .t { font-size: 24px; font-weight: 800; color: var(--teal-dark); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.move-pt .p { font-size: 13px; font-weight: 700; }
+.move-pt .z { font-size: 11px; color: var(--sub); }
+.move-pt.to { text-align: right; }
+.move-arrow { color: var(--gold); font-size: 22px; font-weight: 800; }
+.move-detail { font-size: 13px; color: var(--sub); margin-top: 6px; }
+.move-detail div + div { margin-top: 2px; }
+.move.cancelled { background: #F6F7F7; }
+.move.cancelled .move-route { text-decoration: line-through; opacity: .5; }
+.move.unbooked { border-color: var(--red); background: var(--red-light); }
+.info-card { padding: 14px 16px; background: linear-gradient(135deg, var(--gold-light), #fff); border: 2px solid #F7DB93; }
+.info-card ul { margin: 6px 0 0; padding-left: 1.2em; font-size: 14px; }
+.info-card li + li { margin-top: 3px; }
+
+/* 宿 */
+.hotel { padding: 14px; }
+.hotel-dates { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.hotel-name { font-size: 18px; font-weight: 800; }
+.hotel-en { font-size: 14px; color: var(--teal-dark); font-weight: 700; }
+.hotel-addr { font-size: 13.5px; margin-top: 6px; }
+.hotel-addr.placeholder { color: var(--red); font-weight: 700; }
+.hotel-notes { margin: 8px 0 0; padding: 0; list-style: none; font-size: 13px; }
+.hotel-notes li { padding-left: 1.1em; position: relative; }
+.hotel-notes li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-weight: 800; }
+.btn-row { display: flex; gap: 8px; margin-top: 12px; }
+.btn {
+  border: 0; border-radius: 14px; padding: 12px 14px; font-weight: 800; font-size: 15px; cursor: pointer;
+  background: var(--teal); color: #fff; box-shadow: 0 3px 0 var(--teal-dark); flex: 1;
+  text-decoration: none; text-align: center; display: inline-block;
+}
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--teal-dark); }
+.btn.gold { background: var(--gold); color: #3A2A00; box-shadow: 0 3px 0 var(--gold-dark); }
+.btn.ghost { background: var(--teal-light); color: var(--teal-dark); box-shadow: 0 3px 0 var(--teal-mid); }
+.btn.small { flex: 0 0 auto; padding: 6px 12px; font-size: 13px; border-radius: 10px; }
+
+/* 運転手用 全画面 */
+#driver {
+  position: fixed; inset: 0; z-index: 100; background: #fff; display: none;
+  flex-direction: column; justify-content: center; padding: calc(env(safe-area-inset-top) + 24px) 22px calc(env(safe-area-inset-bottom) + 24px);
+  text-align: center;
+}
+#driver.show { display: flex; }
+#driver .d-label { font-size: 15px; color: var(--sub); font-weight: 700; }
+#driver .d-name { font-size: 40px; font-weight: 900; line-height: 1.2; margin: 8px 0 6px; word-break: break-word; }
+#driver .d-local { font-size: 30px; font-weight: 800; color: var(--teal-dark); line-height: 1.3; margin-bottom: 18px; }
+#driver .d-addr { font-size: 28px; font-weight: 700; line-height: 1.4; background: var(--gold-light); border-radius: 18px; padding: 16px; word-break: break-word; }
+#driver .d-addr.placeholder { color: var(--red); }
+#driver .d-addr-sub { font-size: 20px; margin-top: 10px; color: var(--sub); }
+#driver .d-close { position: absolute; top: calc(env(safe-area-inset-top) + 12px); right: 14px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--teal-light); font-size: 22px; color: var(--teal-dark); }
+#driver .d-hint { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + 14px); font-size: 12px; color: var(--sub); }
+
+/* やること */
+.progress { padding: 14px 16px; }
+.progress-top { display: flex; justify-content: space-between; align-items: baseline; font-weight: 800; }
+.progress-top b { color: var(--teal); font-size: 24px; }
+.bar { height: 12px; background: var(--teal-light); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+.bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 999px; transition: width .3s; }
+.todo { display: flex; align-items: flex-start; gap: 12px; padding: 14px; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.todo .box {
+  flex: 0 0 28px; height: 28px; border-radius: 9px; border: 3px solid var(--teal-mid); background: #fff;
+  display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 16px; transition: all .15s;
+}
+.todo.done .box { background: var(--gold); border-color: var(--gold); }
+.todo .t { font-size: 15px; font-weight: 700; }
+.todo .n { font-size: 12px; color: var(--sub); margin-top: 2px; }
+.todo.done .t { text-decoration: line-through; color: var(--sub); }
+
+/* メモ */
+.memo { padding: 14px 16px; }
+.memo label { display: block; font-weight: 800; font-size: 14px; color: var(--teal-dark); margin-bottom: 6px; }
+.memo .hint { font-size: 12px; color: var(--sub); margin-top: 4px; }
+.field { display: flex; gap: 8px; }
+.memo input, .memo textarea {
+  width: 100%; font: inherit; font-size: 18px; padding: 10px 12px; border: 2px solid var(--line);
+  border-radius: 12px; background: #FBFEFD; color: var(--ink); -webkit-appearance: none; appearance: none;
+}
+.memo input { font-weight: 700; letter-spacing: .04em; }
+.memo textarea { min-height: 180px; resize: vertical; font-size: 16px; line-height: 1.6; }
+.memo input:focus, .memo textarea:focus { outline: none; border-color: var(--teal); background: #fff; }
+.saved { font-size: 12px; color: var(--teal); font-weight: 700; text-align: right; min-height: 18px; margin-top: 4px; }
+.privacy { font-size: 12.5px; color: var(--sub); background: var(--teal-light); border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; }
+
+/* 下部タブ */
+nav.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: rgba(255,255,255,.96); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4px 16px rgba(29,43,42,.06);
+}
+nav.tabs button {
+  height: var(--tabh); border: 0; background: none; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; font-size: 11px; font-weight: 700; color: var(--sub); cursor: pointer; position: relative;
+}
+nav.tabs button .ic { font-size: 22px; line-height: 1; filter: grayscale(.7); opacity: .8; transition: transform .15s; }
+nav.tabs button.active { color: var(--teal-dark); }
+nav.tabs button.active .ic { filter: none; opacity: 1; transform: translateY(-2px) scale(1.12); }
+nav.tabs button.active::after { content: ""; position: absolute; top: 6px; width: 40px; height: 32px; border-radius: 12px; background: var(--teal-light); z-index: -1; }
+nav.tabs .dot { position: absolute; top: 8px; right: calc(50% - 20px); width: 9px; height: 9px; border-radius: 50%; background: var(--red); border: 2px solid #fff; }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(var(--tabh) + env(safe-area-inset-bottom) + 16px); transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;
+  opacity: 0; pointer-events: none; transition: all .2s; z-index: 50;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.foot { text-align: center; font-size: 11px; color: var(--sub); margin-top: 18px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-title"><span>🕌 ウズベキスタン旅のしおり</span><button class="tz-btn" id="tzBtn" type="button">🕒 時差</button></div>
+  <div class="countdown" id="countdown"></div>
+  <div class="top-sub" id="topSub"></div>
+  <div class="tz-note" id="tzNote"></div>
+</header>
+
+<main>
+  <section class="view" id="view-days"></section>
+  <section class="view" id="view-moves"></section>
+  <section class="view" id="view-hotels"></section>
+  <section class="view" id="view-todo"></section>
+  <section class="view" id="view-memo"></section>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button type="button" data-tab="days"><span class="ic">📅</span>日程</button>
+  <button type="button" data-tab="moves"><span class="ic">✈️</span>移動</button>
+  <button type="button" data-tab="hotels"><span class="ic">🏨</span>宿</button>
+  <button type="button" data-tab="todo"><span class="ic">✅</span>やること</button>
+  <button type="button" data-tab="memo"><span class="ic">📝</span>メモ</button>
+</nav>
+
+<div id="driver" role="dialog" aria-modal="true">
+  <button class="d-close" type="button" id="driverClose" aria-label="閉じる">✕</button>
+  <div class="d-label">Please take me to / Iltimos, shu manzilga</div>
+  <div class="d-name" id="dName"></div>
+  <div class="d-local" id="dLocal"></div>
+  <div class="d-addr" id="dAddr"></div>
+  <div class="d-hint">画面をタップすると閉じます</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   データ（ここを書き換えれば内容が変わります）
+   ・時刻はすべて現地時間
+   ・個人情報（予約番号・マイレージ番号・乗車券番号）はここに書かない！
+     → アプリの「メモ」タブで入力（端末の localStorage にだけ保存）
+   ===================================================================== */
+
+const TRIP = {
+  title: 'ウズベキスタン旅行',
+  start: '2026-12-27',
+  end: '2027-01-03',
+};
+
+// 時差の注記
+const TIMEZONES = [
+  { place: '日本', utc: '+9' },
+  { place: '上海', utc: '+8' },
+  { place: 'タシケント', utc: '+5' },
+];
+
+// 宿（id は日程の stay から参照）
+const HOTELS = [
+  {
+    id: 'autoongo',
+    name: '上海盎格ホテル',
+    nameEn: 'Autoongo Hotel',
+    nameLocal: '',
+    city: '上海',
+    nights: ['2026-12-27'],
+    address: '上海市 龍陽路2000号',
+    addressLocal: '上海市龙阳路2000号',
+    notes: ['素泊まり', '無料キャンセル：12/27 12:00（現地）まで', 'チェックアウト 14:00'],
+  },
+  {
+    id: 'marhaba',
+    name: 'マルハバ ホテル＆スパ',
+    nameEn: 'Marhaba Hotel & Spa',
+    nameLocal: '',
+    city: 'タシケント（チランザール地区）',
+    nights: ['2026-12-28', '2027-01-01'],
+    address: '',          // 住所を記入
+    addressLocal: '',     // 現地語の住所を記入
+    notes: ['チランザール地区'],
+  },
+  {
+    id: 'munis',
+    name: 'ムニス ブティック ホテル',
+    nameEn: 'Munis Boutique Hotel',
+    nameLocal: '',
+    city: 'ブハラ',
+    nights: ['2026-12-29'],
+    address: '',
+    addressLocal: '',
+    notes: [],
+  },
+  {
+    id: 'movenpick',
+    name: 'モーベンピック サマルカンド',
+    nameEn: 'Mövenpick Samarkand',
+    nameLocal: '',
+    city: 'サマルカンド',
+    nights: ['2026-12-30', '2026-12-31'],
+    address: '',
+    addressLocal: '',
+    notes: ['2連泊'],
+  },
+];
+
+// 日程（type: flight / train / move / sight / info、warn: true で赤い警告）
+const DAYS = [
+  {
+    date: '2026-12-27', title: '名古屋 → 上海', area: '上海', tz: 'UTC+9 → +8', stay: 'autoongo',
+    items: [
+      { time: '13:35', type: 'flight', text: 'MU530 中部T1 発', note: '中国東方航空。上海浦東T1 15:45 着' },
+      { time: '15:45', type: 'move', text: '上海浦東T1 着 → 荷物を受け取って入国' },
+      { time: '',      type: 'move', text: 'リニア（上海マグレブ）で龍陽路へ' },
+      { time: '',      type: 'info', text: 'ホテルにチェックイン（上海盎格ホテル）' },
+      { time: '夜',    type: 'sight', text: '地下鉄で夜景・食事', note: 'ロボタクシー（Pony.ai）に乗ってみる' },
+    ],
+  },
+  {
+    date: '2026-12-28', title: '上海 → タシケント', area: '上海 / タシケント', tz: 'UTC+8 → +5', stay: 'marhaba',
+    items: [
+      { time: '',      type: 'move', text: 'リニアで浦東空港へ', note: 'チェックアウト14:00だが、フライトに合わせて早めに出発' },
+      { time: '',      type: 'info', text: '荷物を再預け入れ' },
+      { time: '13:25', type: 'flight', text: 'MU6037 浦東T1 発', note: 'タシケントT2 18:20 着' },
+      { time: '18:20', type: 'move', text: 'タシケントT2 着 → マルハバ ホテル＆スパへ' },
+    ],
+  },
+  {
+    date: '2026-12-29', title: 'タシケント → ブハラ', area: 'ブハラ', tz: 'UTC+5', stay: 'munis',
+    items: [
+      { time: '06:20', type: 'flight', text: 'シルクアビア タシケント 発', note: 'ブハラ 07:50 着。預け10kg＋機内5kg' },
+      { time: '07:50', type: 'move', text: 'ブハラ着 → ホテルに荷物を預けて観光' },
+    ],
+  },
+  {
+    date: '2026-12-30', title: 'ブハラ観光 → サマルカンド', area: 'ブハラ / サマルカンド', tz: 'UTC+5', stay: 'movenpick',
+    items: [
+      { time: '日中',  type: 'sight', text: 'ブハラ観光' },
+      { time: '16:55', type: 'train', text: 'シャルク 709ФА ブハラ 発', note: 'サマルカンド 19:13 着。4号車19番（乗車券番号はメモタブ）' },
+      { time: '19:13', type: 'move', text: 'サマルカンド着 → モーベンピックへ' },
+    ],
+  },
+  {
+    date: '2026-12-31', title: 'サマルカンド観光', area: 'サマルカンド', tz: 'UTC+5', stay: 'movenpick',
+    items: [
+      { time: '日中',  type: 'sight', text: 'サマルカンド観光' },
+      { time: '',      type: 'sight', text: 'スーパーや市場で現地の生活を見る' },
+      { time: '夜',    type: 'info', text: '大みそか 🎆' },
+    ],
+  },
+  {
+    date: '2027-01-01', title: 'サマルカンド → タシケント', area: 'サマルカンド / タシケント', tz: 'UTC+5', stay: 'marhaba',
+    items: [
+      { time: '',      type: 'train', text: 'サマルカンド → タシケント 列車', warn: '列車は未手配です！早めに予約' },
+      { time: '',      type: 'move', text: 'タシケント着 → マルハバ ホテル＆スパへ' },
+    ],
+  },
+  {
+    date: '2027-01-02', title: 'タシケント → 上海（機中泊）', area: 'タシケント', tz: 'UTC+5 → +8', stay: null, stayLabel: '機中泊',
+    items: [
+      { time: '日中',  type: 'sight', text: 'タシケント観光' },
+      { time: '20:10', type: 'flight', text: 'MU6038 タシケントT2 発', note: '浦東T1 1/3 06:00 着' },
+    ],
+  },
+  {
+    date: '2027-01-03', title: '上海 → 名古屋', area: '上海 / 名古屋', tz: 'UTC+8 → +9', stay: null, stayLabel: 'おかえりなさい 🏠',
+    items: [
+      { time: '06:00', type: 'move', text: '浦東T1 着（乗り継ぎ）', note: '上海で荷物の受け取りは不要' },
+      { time: '12:20', type: 'flight', text: 'MU719 浦東T1 発', note: '中部T1 16:00 着' },
+      { time: '16:00', type: 'move', text: '中部T1 着' },
+    ],
+  },
+];
+
+// 移動（status: 'ok' / 'cancel'（払い戻し予定） / 'unbooked'（未手配））
+const MOVES = [
+  { date: '2026-12-27', kind: '国際線', name: 'MU530', carrier: '中国東方航空',
+    from: { t: '13:35', p: '中部 T1', z: '日本 UTC+9' }, to: { t: '15:45', p: '上海浦東 T1', z: '上海 UTC+8' },
+    details: ['エコノミー', '上海で荷物を受け取って入国'], status: 'ok' },
+  { date: '2026-12-28', kind: '国際線', name: 'MU6037', carrier: '中国東方航空',
+    from: { t: '13:25', p: '上海浦東 T1', z: '上海 UTC+8' }, to: { t: '18:20', p: 'タシケント T2', z: 'UTC+5' },
+    details: ['エコノミー', '荷物を再預け入れ'], status: 'ok' },
+  { date: '2026-12-29', kind: '国内線', name: 'シルクアビア', carrier: 'Silk Avia',
+    from: { t: '06:20', p: 'タシケント', z: 'UTC+5' }, to: { t: '07:50', p: 'ブハラ', z: 'UTC+5' },
+    details: ['預け 10kg ＋ 機内 5kg（重量制限に注意）'], status: 'ok' },
+  { date: '2026-12-29', kind: '列車', name: 'シャルク 710ФА', carrier: 'Sharq',
+    from: { t: '08:45', p: 'タシケント', z: 'UTC+5' }, to: { t: '14:31', p: 'ブハラ', z: 'UTC+5' },
+    details: ['払い戻し予定（シルクアビアの発券確認後）'], status: 'cancel' },
+  { date: '2026-12-30', kind: '列車', name: 'シャルク 709ФА', carrier: 'Sharq',
+    from: { t: '16:55', p: 'ブハラ', z: 'UTC+5' }, to: { t: '19:13', p: 'サマルカンド', z: 'UTC+5' },
+    details: ['4号車 19番', '乗車券番号はメモタブ'], status: 'ok' },
+  { date: '2027-01-01', kind: '列車', name: 'サマルカンド → タシケント', carrier: '',
+    from: { t: '--:--', p: 'サマルカンド', z: 'UTC+5' }, to: { t: '--:--', p: 'タシケント', z: 'UTC+5' },
+    details: ['列車は未手配です。予約を取ってください'], status: 'unbooked' },
+  { date: '2027-01-02', kind: '国際線', name: 'MU6038', carrier: '中国東方航空',
+    from: { t: '20:10', p: 'タシケント T2', z: 'UTC+5' }, to: { t: '06:00', p: '上海浦東 T1', z: '上海 UTC+8 ・ 1/3', next: true },
+    details: ['エコノミー', '上海で荷物の受け取りは不要（スルー）'], status: 'ok' },
+  { date: '2027-01-03', kind: '国際線', name: 'MU719', carrier: '中国東方航空',
+    from: { t: '12:20', p: '上海浦東 T1', z: '上海 UTC+8' }, to: { t: '16:00', p: '中部 T1', z: '日本 UTC+9' },
+    details: ['エコノミー'], status: 'ok' },
+];
+
+// 移動タブ上部の補足
+const MOVE_INFO = [
+  '中国東方航空 エコノミー：受託 23kg × 2個、機内 8kg × 1個 ＋ 身の回り品',
+  '往路の上海：荷物の受け取り・再預け入れあり／復路：なし（スルー）',
+  'マイルは JMB に積算（番号はメモタブ）',
+  'Trip.com のラウンジ無料パス 2枚',
+  '国内線（シルクアビア）は 預け10kg＋機内5kg',
+];
+
+// やることリスト（id はチェック状態の保存キー。変えると状態がリセットされます）
+const TODOS = [
+  { id: 'refund-710', text: '12/29の列車（710ФА）を払い戻す', note: 'シルクアビアの発券確認後' },
+  { id: 'train-0101', text: '1/1 サマルカンド → タシケントの列車を取る', note: '未手配' },
+  { id: 'hotel-addr', text: '宿の住所（現地語表記）を入れる', note: 'index.html の HOTELS を書き換え' },
+  { id: 'bag-10kg', text: 'ブハラ便に合わせて荷物を10kg以内に収める', note: '預け10kg＋機内5kg' },
+  { id: 'ponyai', text: 'Pony.aiアプリのログインを確認する', note: '12/27夜 上海で使う' },
+  { id: 'sum', text: 'スムへの両替方法を決める' },
+];
+
+/* ===================================================================== */
+
+const LS_PREFIX = 'uzbtrip:';
+function lsGet(key, fallback) {
+  try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
+  catch (e) { return fallback; }
+}
+function lsSet(key, value) {
+  try { localStorage.setItem(LS_PREFIX + key, value); return true; }
+  catch (e) { return false; }
+}
+
+const DOW = ['日', '月', '火', '水', '木', '金', '土'];
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function parseDate(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
+function ymd(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+function md(str) { const d = parseDate(str); return `${d.getMonth() + 1}/${d.getDate()}`; }
+function dow(str) { return DOW[parseDate(str).getDay()]; }
+function dayDiff(a, b) { return Math.round((parseDate(b) - parseDate(a)) / 86400000); }
+
+// 端末の現地日付を「今日」とする（?date=2026-12-30 でテスト可能）
+function todayStr() {
+  try {
+    const q = new URLSearchParams(location.search).get('date');
+    if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+  } catch (e) {}
+  return ymd(new Date());
+}
+const TODAY = todayStr();
+const hotelById = (id) => HOTELS.find((h) => h.id === id);
+
+/* ---------- ヘッダー ---------- */
+function renderHeader() {
+  const total = dayDiff(TRIP.start, TRIP.end) + 1;
+  const toStart = dayDiff(TODAY, TRIP.start);
+  const fromStart = dayDiff(TRIP.start, TODAY);
+  const cd = $('#countdown'), sub = $('#topSub');
+  if (toStart > 0) {
+    cd.innerHTML = `出発まであと<b>${toStart}</b>日`;
+    sub.textContent = `${md(TRIP.start)}(${dow(TRIP.start)}) 〜 ${md(TRIP.end)}(${dow(TRIP.end)})・${total}日間`;
+  } else if (fromStart < total) {
+    const day = DAYS.find((d) => d.date === TODAY);
+    cd.innerHTML = `旅行<b>${fromStart + 1}</b>日目<span style="font-size:15px;opacity:.85"> / ${total}日</span>`;
+    sub.textContent = day ? `今日：${day.title}` : '';
+  } else {
+    cd.innerHTML = 'おかえりなさい 🎉';
+    sub.textContent = `${md(TRIP.start)} 〜 ${md(TRIP.end)} の旅、おつかれさまでした`;
+  }
+  $('#tzNote').innerHTML = '🕒 時刻はすべて現地時間<br>' + TIMEZONES.map((t) => `${esc(t.place)} UTC${esc(t.utc)}`).join('／') +
+    '<br><span style="opacity:.85">日本との時差：上海 −1時間／タシケント −4時間</span>';
+}
+$('#tzBtn').addEventListener('click', () => $('#tzNote').classList.toggle('show'));
+
+/* ---------- 日程 ---------- */
+function renderDays() {
+  const v = $('#view-days');
+  const inTrip = TODAY >= TRIP.start && TODAY <= TRIP.end;
+  const warnCount = DAYS.reduce((n, d) => n + d.items.filter((i) => i.warn).length, 0);
+  let html = '';
+  if (warnCount) {
+    html += `<div class="warn-box" style="margin-bottom:12px">未手配の項目が ${warnCount} 件あります</div>`;
+  }
+  html += DAYS.map((d, idx) => {
+    const isToday = d.date === TODAY;
+    const isPast = d.date < TODAY;
+    const hasWarn = d.items.some((i) => i.warn);
+    const open = isToday || (!inTrip && TODAY < TRIP.start && idx === 0);
+    const dw = parseDate(d.date).getDay();
+    const hotel = d.stay ? hotelById(d.stay) : null;
+    const cls = ['card', isToday && 'today', isPast && 'past', open && 'open', hasWarn && 'has-warn'].filter(Boolean).join(' ');
+    const items = d.items.map((i) => `
+      <li class="${esc(i.type)}${i.warn ? ' warn' : ''}">
+        ${i.time ? `<span class="tl-time">${esc(i.time)}</span>` : ''}<span class="tl-text">${esc(i.text)}</span>
+        ${i.note ? `<div class="tl-note">${esc(i.note)}</div>` : ''}
+        ${i.warn ? `<div class="warn-box">${esc(i.warn)}</div>` : ''}
+      </li>`).join('');
+    const stay = hotel
+      ? `<div class="stay-row">🛏️ <span><b>${esc(hotel.name)}</b> 泊</span><button class="btn small gold" type="button" data-driver="${esc(hotel.id)}">運転手に見せる</button></div>`
+      : `<div class="stay-row">✈️ <span>${esc(d.stayLabel || '')}</span></div>`;
+    return `
+      <div class="${cls}" id="day-${d.date}">
+        <button class="day-head" type="button" data-toggle>
+          <div class="day-date ${dw === 0 ? 'sun' : dw === 6 ? 'sat' : ''}"><span class="md">${md(d.date)}</span><span class="dow">${DOW[dw]}</span></div>
+          <div class="day-main">
+            <div class="day-title">${esc(d.title)}</div>
+            <div class="day-meta">
+              ${isToday ? '<span class="pill today-badge">今日</span>' : ''}
+              ${hasWarn ? '<span class="pill red">未手配あり</span>' : ''}
+              <span class="pill">${esc(d.area)}</span><span class="pill gray">${esc(d.tz)}</span>
+            </div>
+          </div>
+          <span class="chev">▼</span>
+        </button>
+        <div class="day-body"><ul class="timeline">${items}</ul>${stay}</div>
+      </div>`;
+  }).join('');
+  html += '<div class="foot">時刻はすべて現地時間（日本UTC+9／上海UTC+8／タシケントUTC+5）</div>';
+  v.innerHTML = html;
+}
+$('#view-days').addEventListener('click', (e) => {
+  const t = e.target.closest('[data-toggle]');
+  if (t) t.parentElement.classList.toggle('open');
+});
+
+/* ---------- 移動 ---------- */
+function renderMoves() {
+  const v = $('#view-moves');
+  let html = `<div class="card info-card"><b>🧳 荷物・マイル</b><ul>${MOVE_INFO.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>`;
+  const groups = [
+    ['✈️ フライト（国際線）', (m) => m.kind === '国際線'],
+    ['🛩️ 国内線', (m) => m.kind === '国内線'],
+    ['🚄 列車', (m) => m.kind === '列車'],
+  ];
+  groups.forEach(([label, fn]) => {
+    const list = MOVES.filter(fn);
+    if (!list.length) return;
+    html += `<h2 class="sec">${label}</h2>`;
+    html += list.map((m) => {
+      const statusPill = m.status === 'cancel' ? '<span class="pill gray">払い戻し予定</span>'
+        : m.status === 'unbooked' ? '<span class="pill red">⚠️ 未手配</span>' : '';
+      return `
+      <div class="card move ${m.status === 'cancel' ? 'cancelled' : ''} ${m.status === 'unbooked' ? 'unbooked' : ''}">
+        <div class="move-top">
+          <span class="pill gold">${md(m.date)}(${dow(m.date)})</span>
+          <span class="move-name">${esc(m.name)}</span>
+          ${statusPill}
+        </div>
+        <div class="move-route">
+          <div class="move-pt"><div class="t">${esc(m.from.t)}</div><div class="p">${esc(m.from.p)}</div><div class="z">${esc(m.from.z)}</div></div>
+          <div class="move-arrow">→</div>
+          <div class="move-pt to"><div class="t">${esc(m.to.t)}${m.to.next ? '<small style="font-size:12px;color:var(--red)"> +1日</small>' : ''}</div><div class="p">${esc(m.to.p)}</div><div class="z">${esc(m.to.z)}</div></div>
+        </div>
+        <div class="move-detail">${m.carrier ? `<div>${esc(m.carrier)}</div>` : ''}${m.details.map((s) => `<div>・${esc(s)}</div>`).join('')}</div>
+      </div>`;
+    }).join('');
+  });
+  v.innerHTML = html;
+}
+
+/* ---------- 宿 ---------- */
+function nightsLabel(h) { return h.nights.map((n) => `<span class="pill gold">${md(n)}(${dow(n)})泊</span>`).join(''); }
+function renderHotels() {
+  const v = $('#view-hotels');
+  v.innerHTML = HOTELS.map((h) => {
+    const addr = h.addressLocal || h.address;
+    const mapQ = encodeURIComponent(h.address || h.addressLocal ? `${h.nameEn} ${h.addressLocal || h.address}` : `${h.nameEn} ${h.city}`);
+    return `
+    <div class="card hotel">
+      <div class="hotel-dates">${nightsLabel(h)}<span class="pill">${esc(h.city)}</span></div>
+      <div class="hotel-name">${esc(h.name)}</div>
+      <div class="hotel-en">${esc(h.nameEn)}</div>
+      ${addr ? `<div class="hotel-addr">📍 ${esc(h.address)}${h.addressLocal && h.addressLocal !== h.address ? `<br><span style="color:var(--sub)">${esc(h.addressLocal)}</span>` : ''}</div>`
+             : '<div class="hotel-addr placeholder">📍 住所を記入</div>'}
+      ${h.notes.length ? `<ul class="hotel-notes">${h.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>` : ''}
+      <div class="btn-row">
+        <button class="btn gold" type="button" data-driver="${esc(h.id)}">🚕 運転手に見せる</button>
+        <a class="btn ghost small" href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- 運転手に見せる ---------- */
+function showDriver(id) {
+  const h = hotelById(id);
+  if (!h) return;
+  $('#dName').textContent = h.nameEn;
+  $('#dLocal').textContent = h.nameLocal || '';
+  $('#dLocal').style.display = h.nameLocal ? '' : 'none';
+  const a = $('#dAddr');
+  if (h.addressLocal || h.address) {
+    a.classList.remove('placeholder');
+    a.innerHTML = esc(h.addressLocal || h.address) +
+      (h.addressLocal && h.address && h.addressLocal !== h.address ? `<div class="d-addr-sub">${esc(h.address)}</div>` : '');
+  } else {
+    a.classList.add('placeholder');
+    a.innerHTML = '住所を記入<div class="d-addr-sub">' + esc(h.city) + '</div>';
+  }
+  $('#driver').classList.add('show');
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-driver]');
+  if (b) { e.stopPropagation(); showDriver(b.dataset.driver); }
+});
+$('#driver').addEventListener('click', () => $('#driver').classList.remove('show'));
+
+/* ---------- やること ---------- */
+function renderTodo() {
+  const v = $('#view-todo');
+  const done = TODOS.filter((t) => lsGet('todo:' + t.id, '0') === '1').length;
+  const pct = TODOS.length ? Math.round((done / TODOS.length) * 100) : 0;
+  v.innerHTML = `
+    <div class="card progress">
+      <div class="progress-top"><span>準備の進み具合</span><span><b>${done}</b> / ${TODOS.length}</span></div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+    </div>` +
+    TODOS.map((t) => {
+      const isDone = lsGet('todo:' + t.id, '0') === '1';
+      return `<div class="card todo ${isDone ? 'done' : ''}" data-todo="${esc(t.id)}" role="checkbox" aria-checked="${isDone}">
+        <div class="box">${isDone ? '✓' : ''}</div>
+        <div><div class="t">${esc(t.text)}</div>${t.note ? `<div class="n">${esc(t.note)}</div>` : ''}</div>
+      </div>`;
+    }).join('');
+  updateTodoDot();
+}
+function updateTodoDot() {
+  const remaining = TODOS.filter((t) => lsGet('todo:' + t.id, '0') !== '1').length;
+  const btn = $('#tabs [data-tab="todo"]');
+  let dot = btn.querySelector('.dot');
+  if (remaining && !dot) { dot = document.createElement('span'); dot.className = 'dot'; btn.appendChild(dot); }
+  if (!remaining && dot) dot.remove();
+}
+$('#view-todo').addEventListener('click', (e) => {
+  const el = e.target.closest('[data-todo]');
+  if (!el) return;
+  const key = 'todo:' + el.dataset.todo;
+  const next = lsGet(key, '0') === '1' ? '0' : '1';
+  if (!lsSet(key, next)) toast('保存できませんでした（プライベートモード？）');
+  renderTodo();
+});
+
+/* ---------- メモ ---------- */
+const MEMO_FIELDS = [
+  { id: 'pnr', label: '✈️ PNR（予約番号）', hint: '中国東方航空の予約番号', type: 'input', mode: 'latin' },
+  { id: 'jmb', label: '🎫 JMB番号', hint: 'マイル積算用', type: 'input', mode: 'numeric' },
+  { id: 'ticket1230', label: '🚄 12/30 列車の乗車券番号', hint: 'シャルク 709ФА ブハラ → サマルカンド（4号車19番）', type: 'input', mode: 'latin' },
+  { id: 'free', label: '📝 自由メモ', hint: '', type: 'textarea' },
+];
+function renderMemo() {
+  const v = $('#view-memo');
+  v.innerHTML = `<div class="privacy">🔒 ここに入力した内容はこの端末のブラウザ（localStorage）にだけ保存され、インターネットには送信されません。入力すると自動保存されます。</div>` +
+    MEMO_FIELDS.map((f) => `
+    <div class="card memo">
+      <label for="memo-${f.id}">${esc(f.label)}</label>
+      ${f.type === 'textarea'
+        ? `<textarea id="memo-${f.id}" data-memo="${f.id}" placeholder="自由にメモ"></textarea>`
+        : `<div class="field"><input id="memo-${f.id}" data-memo="${f.id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" ${f.mode === 'numeric' ? 'inputmode="numeric"' : ''} placeholder="未入力"><button class="btn small ghost" type="button" data-copy="${f.id}">コピー</button></div>`}
+      ${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}
+      <div class="saved" id="saved-${f.id}"></div>
+    </div>`).join('');
+  MEMO_FIELDS.forEach((f) => { $(`#memo-${f.id}`).value = lsGet('memo:' + f.id, ''); });
+}
+const saveTimers = {};
+$('#view-memo').addEventListener('input', (e) => {
+  const id = e.target.dataset.memo;
+  if (!id) return;
+  const ok = lsSet('memo:' + id, e.target.value);
+  const s = $(`#saved-${id}`);
+  s.textContent = ok ? '✓ 保存しました' : '⚠️ 保存できませんでした';
+  s.style.color = ok ? '' : 'var(--red)';
+  clearTimeout(saveTimers[id]);
+  saveTimers[id] = setTimeout(() => { s.textContent = ''; }, 1500);
+});
+$('#view-memo').addEventListener('click', async (e) => {
+  const b = e.target.closest('[data-copy]');
+  if (!b) return;
+  const input = $(`#memo-${b.dataset.copy}`);
+  if (!input.value) { toast('未入力です'); return; }
+  try { await navigator.clipboard.writeText(input.value); toast('コピーしました'); }
+  catch (err) { input.select(); try { document.execCommand('copy'); toast('コピーしました'); } catch (e2) { toast('コピーできませんでした'); } }
+});
+
+/* ---------- 共通 ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+function showTab(name, scroll = true) {
+  document.querySelectorAll('section.view').forEach((s) => s.classList.toggle('active', s.id === 'view-' + name));
+  document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === name));
+  lsSet('tab', name);
+  if (scroll) window.scrollTo(0, 0);
+}
+$('#tabs').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-tab]');
+  if (b) showTab(b.dataset.tab);
+});
+
+function init() {
+  renderHeader();
+  renderDays();
+  renderMoves();
+  renderHotels();
+  renderTodo();
+  renderMemo();
+  const inTrip = TODAY >= TRIP.start && TODAY <= TRIP.end;
+  // 旅行中は必ず日程タブを開いて当日のカードへスクロール
+  const saved = lsGet('tab', 'days');
+  const tab = inTrip ? 'days' : (['days', 'moves', 'hotels', 'todo', 'memo'].includes(saved) ? saved : 'days');
+  showTab(tab, false);
+  if (inTrip) {
+    const el = document.getElementById('day-' + TODAY);
+    if (el) setTimeout(() => {
+      const y = el.getBoundingClientRect().top + window.scrollY - $('header.top').offsetHeight - 10;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    }, 150);
+  }
+}
+init();
+
+// 日付が変わったら（開きっぱなしで翌日になった場合など）再読み込み
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && todayStr() !== TODAY) location.reload();
+});
+
+// オフライン対応
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
