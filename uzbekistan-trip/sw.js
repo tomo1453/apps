@@ -1,7 +1,7 @@
 // オフライン対応：キャッシュを先に返し（電波なしでもすぐ開く）、裏で最新版に更新する
 // index.html を更新したら CACHE の番号を上げてください
-const CACHE = 'uzbekistan-trip-v1';
-const SHELL = ['./', './index.html'];
+const CACHE = 'uzbekistan-trip-v2';
+const SHELL = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
