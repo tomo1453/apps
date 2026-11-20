@@ -13,6 +13,7 @@
   --bg:#fff4f6; --paper:#ffffff; --ink:#4f3a45; --muted:#8f7480;
   --pink:#ec7a98; --pink-soft:#ffe1e8; --mint:#5fb8a4; --mint-soft:#dcf3ec;
   --butter:#f4c95d; --butter-soft:#fff3d1; --line:#f3cfd8; --dot:#ffd3de;
+  --sky:#e4f3fa; --stone:#f3e6d6; --stone-d:#e0c9ad;
   --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
   --body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;
   --hand:"Kiwi Maru","Zen Maru Gothic",serif;
@@ -20,12 +21,17 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#271c22; --paper:#33252d; --ink:#f7e8ee; --muted:#c8a9b6;
   --pink:#ff9bb5; --pink-soft:#4a2c39; --mint:#86d6c3; --mint-soft:#203d37;
-  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34; color-scheme:dark}}
+  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34;
+  --sky:#243440; --stone:#5c4b45; --stone-d:#7b665b; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#271c22; --paper:#33252d; --ink:#f7e8ee; --muted:#c8a9b6;
   --pink:#ff9bb5; --pink-soft:#4a2c39; --mint:#86d6c3; --mint-soft:#203d37;
-  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34; color-scheme:dark}
+  --butter:#f6d47e; --butter-soft:#43381f; --line:#56404b; --dot:#3d2b34;
+  --sky:#243440; --stone:#5c4b45; --stone-d:#7b665b; color-scheme:dark}
 *{box-sizing:border-box}
+.illus{border-radius:16px;overflow:hidden;margin:2px 0 4px}
+.illus svg{display:block;width:100%;height:auto}
+.cover .scene{margin:18px -24px -24px;display:block;width:calc(100% + 48px);max-width:none;height:auto}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:15px;line-height:1.8;
   background-image:radial-gradient(var(--dot) 1.6px,transparent 1.7px);background-size:22px 22px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
@@ -130,6 +136,20 @@ footer{font-size:12px;color:var(--muted);text-align:center;font-family:var(--han
     <span class="car"><svg viewBox="0 0 34 20" aria-hidden="true"><rect x="2" y="7" width="30" height="8" rx="4" fill="var(--pink)"/><path d="M8 7 L12 2 H22 L27 7z" fill="var(--pink)"/><rect x="13" y="3.5" width="8" height="3.5" rx="1" fill="var(--paper)"/><circle cx="9" cy="16" r="3" fill="var(--ink)"/><circle cx="25" cy="16" r="3" fill="var(--ink)"/></svg>約200km</span>
     <span class="pin">神戸・旧居留地</span>
   </div>
+  <svg class="scene" viewBox="0 0 320 90" role="img" aria-label="神戸の港と山のイラスト">
+    <path d="M0 62 Q50 22 110 50 Q170 14 240 44 Q285 26 320 40 V90 H0z" fill="var(--mint-soft)"/>
+    <g fill="var(--paper)"><ellipse cx="60" cy="22" rx="16" ry="6"/><ellipse cx="72" cy="18" rx="10" ry="6"/><ellipse cx="262" cy="16" rx="13" ry="5"/></g>
+    <rect x="191" y="12" width="24" height="6" rx="2" fill="var(--pink)"/>
+    <path d="M192 72 Q205 44 194 18 H212 Q201 44 214 72z" fill="var(--pink)"/>
+    <path d="M196 30 H210 M199 44 H207 M197 58 H209" stroke="var(--paper)" stroke-width="2"/>
+    <rect x="232" y="48" width="18" height="24" rx="3" fill="var(--paper)"/>
+    <rect x="254" y="40" width="14" height="32" rx="3" fill="var(--butter-soft)"/>
+    <path d="M0 70 Q20 64 40 70 T80 70 T120 70 T160 70 T200 70 T240 70 T280 70 T320 70 V90 H0z" fill="var(--sky)"/>
+    <path d="M52 70 H112 L104 80 H60z" fill="var(--paper)"/>
+    <rect x="68" y="61" width="26" height="9" rx="2" fill="var(--butter)"/>
+    <rect x="86" y="54" width="5" height="8" fill="var(--ink)"/>
+    <path d="M20 82 q6-4 12 0 M140 84 q6-4 12 0 M260 82 q6-4 12 0" fill="none" stroke="var(--paper)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
 </header>
 
 <section>
@@ -148,12 +168,43 @@ footer{font-size:12px;color:var(--muted);text-align:center;font-family:var(--han
     <li class="plain"><span class="time">10:30</span><div><h3>旧居留地周辺に駐車</h3>
       <p>神戸BALに専用駐車場はなし。大丸神戸店の駐車場（買い物で割引あり）か、周辺のコインパーキングへ。</p></div></li>
 
-    <li class="spot"><span class="time">10:40</span><div class="card mint"><span class="sticker">綺麗な街並み</span>
+    <li class="spot"><span class="time">10:40</span><div class="card mint">
+      <div class="illus"><svg viewBox="0 0 320 120" role="img" aria-label="旧居留地の石造りの洋館のイラスト">
+        <rect width="320" height="120" fill="var(--sky)"/>
+        <g fill="var(--paper)"><ellipse cx="62" cy="24" rx="20" ry="8"/><ellipse cx="78" cy="19" rx="12" ry="8"/><ellipse cx="262" cy="26" rx="16" ry="6"/></g>
+        <rect y="104" width="320" height="16" fill="var(--stone-d)"/>
+        <rect x="100" y="38" width="130" height="66" fill="var(--stone)"/>
+        <rect x="94" y="32" width="142" height="8" rx="2" fill="var(--stone-d)"/>
+        <path d="M140 32 L165 14 L190 32z" fill="var(--stone-d)"/>
+        <circle cx="165" cy="25" r="3.5" fill="var(--butter)"/>
+        <g fill="var(--mint)"><rect x="110" y="46" width="12" height="18" rx="6"/><rect x="133" y="46" width="12" height="18" rx="6"/><rect x="185" y="46" width="12" height="18" rx="6"/><rect x="208" y="46" width="12" height="18" rx="6"/>
+        <rect x="110" y="76" width="12" height="18" rx="6"/><rect x="133" y="76" width="12" height="18" rx="6"/><rect x="185" y="76" width="12" height="18" rx="6"/><rect x="208" y="76" width="12" height="18" rx="6"/></g>
+        <g fill="var(--stone-d)"><rect x="152" y="40" width="4" height="64"/><rect x="174" y="40" width="4" height="64"/></g>
+        <path d="M157 104 V84 a8 8 0 0 1 16 0 V104z" fill="var(--pink)"/>
+        <rect x="52" y="80" width="5" height="24" fill="var(--stone-d)"/><circle cx="54" cy="70" r="17" fill="var(--mint)"/><circle cx="46" cy="64" r="5" fill="var(--mint-soft)"/>
+        <rect x="263" y="62" width="3" height="42" fill="var(--ink)"/><rect x="257" y="50" width="15" height="13" rx="4" fill="var(--butter)"/>
+      </svg></div>
+      <span class="sticker">綺麗な街並み</span>
       <h3>旧居留地 朝のおさんぽ</h3>
       <p>お店が開く11時まで、人が少ない時間に写真を。石造りの<b>旧居留地十五番館</b>、<b>商船三井ビルディング</b>、大丸のまわりの回廊がフォトスポット。</p>
     </div></li>
 
-    <li class="spot"><span class="time">11:00</span><div class="card"><span class="sticker">バッグ・可愛い雑貨</span>
+    <li class="spot"><span class="time">11:00</span><div class="card">
+      <div class="illus"><svg viewBox="0 0 320 120" role="img" aria-label="ショッピングバッグのイラスト">
+        <rect width="320" height="120" fill="var(--pink-soft)"/>
+        <rect y="106" width="320" height="14" fill="var(--line)"/>
+        <path d="M122 50 V42 a16 16 0 0 1 32 0 V50" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="108" y="48" width="60" height="58" rx="6" fill="var(--pink)"/>
+        <path d="M138 70 c-6-7-15 1-7 8 l7 7 7-7 c8-7-1-15-7-8z" fill="var(--paper)"/>
+        <path d="M174 62 V56 a13 13 0 0 1 26 0 V62" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="162" y="60" width="50" height="46" rx="6" fill="var(--butter)"/>
+        <rect x="170" y="76" width="34" height="6" rx="3" fill="var(--paper)"/>
+        <path d="M230 84 a14 12 0 0 1 28 0" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="222" y="82" width="44" height="24" rx="11" fill="var(--mint)"/>
+        <circle cx="244" cy="92" r="3" fill="var(--butter)"/>
+        <g fill="var(--paper)"><path d="M70 40 l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M262 30 l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><circle cx="92" cy="80" r="3"/></g>
+      </svg></div>
+      <span class="sticker">バッグ・可愛い雑貨</span>
       <h3>神戸BAL</h3>
       <dl><dt>場所</dt><dd>中央区三宮町3-6-1</dd><dt>営業</dt><dd>11:00–20:00（不定休）</dd></dl>
       <a href="https://www.google.com/maps/search/?api=1&query=神戸BAL" target="_blank" rel="noopener">地図をひらく</a>
@@ -162,7 +213,21 @@ footer{font-size:12px;color:var(--muted);text-align:center;font-family:var(--han
     <li class="plain"><span class="time">12:30</span><div><h3>ランチ</h3>
       <p>旧居留地のカフェか、すぐ北の南京町で食べ歩き。ケーキの分はお腹を空けておいてね。</p></div></li>
 
-    <li class="spot"><span class="time">13:30</span><div class="card butter"><span class="sticker">お皿・雑貨</span>
+    <li class="spot"><span class="time">13:30</span><div class="card butter">
+      <div class="illus"><svg viewBox="0 0 320 120" role="img" aria-label="棚に並んだお皿とカップのイラスト">
+        <rect width="320" height="120" fill="var(--butter-soft)"/>
+        <rect x="40" y="58" width="240" height="5" rx="2" fill="var(--stone-d)"/>
+        <rect x="40" y="106" width="240" height="5" rx="2" fill="var(--stone-d)"/>
+        <circle cx="82" cy="37" r="20" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/><circle cx="82" cy="37" r="11" fill="none" stroke="var(--pink)" stroke-width="2" stroke-dasharray="3 3"/>
+        <circle cx="128" cy="40" r="17" fill="var(--mint-soft)" stroke="var(--mint)" stroke-width="2"/><circle cx="128" cy="40" r="5" fill="var(--mint)"/>
+        <circle cx="174" cy="37" r="20" fill="var(--paper)" stroke="var(--pink)" stroke-width="3"/><g fill="var(--pink-soft)"><circle cx="168" cy="32" r="3"/><circle cx="180" cy="34" r="3"/><circle cx="174" cy="44" r="3"/></g>
+        <rect x="216" y="34" width="24" height="24" rx="6" fill="var(--pink)"/><circle cx="244" cy="44" r="6" fill="none" stroke="var(--pink)" stroke-width="3"/>
+        <g fill="var(--paper)" stroke="var(--line)" stroke-width="2"><ellipse cx="96" cy="102" rx="34" ry="5"/><ellipse cx="96" cy="95" rx="30" ry="5"/><ellipse cx="96" cy="88" rx="26" ry="5"/></g>
+        <path d="M150 104 Q150 82 170 82 Q190 82 190 104z" fill="var(--mint)"/><rect x="162" y="74" width="16" height="9" rx="3" fill="var(--mint)"/>
+        <path d="M222 104 Q212 86 222 72 V66 H238 V72 Q248 86 238 104z" fill="var(--pink-soft)" stroke="var(--pink)" stroke-width="2"/>
+        <path d="M230 66 V54 M230 58 l-6-5 M230 58 l6-4" stroke="var(--mint)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg></div>
+      <span class="sticker">お皿・雑貨</span>
       <h3>ATELIER</h3>
       <p>明治時代の洋館「海岸ビルヂング」の1階。建物そのものもかわいい。旧居留地から南西へ歩いて約7分。</p>
       <dl><dt>場所</dt><dd>中央区海岸通3-1-5 海岸ビルヂング 北側1F</dd><dt>営業</dt><dd>11:00–19:00（<b>水曜定休</b>）</dd></dl>
@@ -172,7 +237,26 @@ footer{font-size:12px;color:var(--muted);text-align:center;font-family:var(--han
     <li class="plain"><span class="time">14:30</span><div><h3>旧居留地 ぶらぶら</h3>
       <p>海岸通から旧居留地へ戻りながら、気になったお店をのぞく。</p></div></li>
 
-    <li class="spot"><span class="time">15:30</span><div class="card"><span class="sticker">ケーキ・かわいい石鹸</span>
+    <li class="spot"><span class="time">15:30</span><div class="card">
+      <div class="illus"><svg viewBox="0 0 320 120" role="img" aria-label="ケーキと石鹸とボトルのイラスト">
+        <rect width="320" height="120" fill="var(--mint-soft)"/>
+        <rect y="106" width="320" height="14" fill="var(--paper)" opacity=".6"/>
+        <ellipse cx="112" cy="104" rx="52" ry="7" fill="var(--paper)"/>
+        <rect x="78" y="62" width="68" height="40" rx="4" fill="var(--butter)"/>
+        <rect x="78" y="74" width="68" height="6" fill="var(--pink)"/>
+        <rect x="78" y="88" width="68" height="5" fill="var(--paper)"/>
+        <path d="M76 64 Q84 54 92 62 Q100 54 108 62 Q116 54 124 62 Q132 54 140 62 Q146 56 148 64z" fill="var(--paper)"/>
+        <path d="M112 54 c-9 0-11-12 0-12 c11 0 9 12 0 12z" fill="var(--pink)"/>
+        <path d="M106 42 l6 4 6-4" fill="none" stroke="var(--mint)" stroke-width="3" stroke-linecap="round"/>
+        <rect x="176" y="76" width="62" height="28" rx="12" fill="var(--pink-soft)" stroke="var(--pink)" stroke-width="2"/>
+        <ellipse cx="207" cy="90" rx="18" ry="8" fill="var(--paper)"/>
+        <path d="M197 90 H217" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"/>
+        <rect x="252" y="50" width="26" height="54" rx="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="258" y="38" width="14" height="13" rx="2" fill="var(--ink)"/>
+        <rect x="256" y="68" width="18" height="20" rx="2" fill="var(--butter-soft)"/>
+        <g fill="var(--paper)"><circle cx="170" cy="44" r="5"/><circle cx="182" cy="34" r="3"/><circle cx="160" cy="30" r="2.5"/></g>
+      </svg></div>
+      <span class="sticker">ケーキ・かわいい石鹸</span>
       <h3>OFFICINE UNIVERSELLE BULY</h3>
       <p>日本で初めてのカフェ併設店。ブティックとカフェがとなり合っていて、お茶のあとに石鹸やハンドクリームを選べる。焼き菓子は¥660〜、ドリンクは¥1,100〜。</p>
       <dl><dt>場所</dt><dd>中央区三宮町3-5-1 神戸BAL ANNEX 1F（BALのすぐ隣）</dd><dt>営業</dt><dd>11:00–20:00（カフェLO 19:00）</dd><dt>電話</dt><dd>078-335-7238</dd></dl>
