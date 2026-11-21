@@ -594,7 +594,7 @@ const SIGHTS = [
 
 /* ===================================================================== */
 
-const APP_VERSION = 'v6';
+const APP_VERSION = 'v7';
 const LS_PREFIX = 'uzbtrip:';
 function lsGet(key, fallback) {
   try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
@@ -735,17 +735,32 @@ function renderMoves() {
 }
 
 /* ---------- 地図（高徳地図 Amap） ---------- */
-// uri.amap.com の検索URL。callnative=1 で Amap アプリが入っていればアプリで開く
-function amapUrl(keyword, city) {
-  const q = new URLSearchParams({ keyword, callnative: '1', src: 'uzbtrip' });
+// アプリを直接起動するURL（iOSの高徳地図アプリのURLスキーム）。キーワード検索の結果が開く
+function amapAppUrl(keyword, city) {
+  const name = city && !keyword.includes(city) ? `${city} ${keyword}` : keyword;
+  return `iosamap://poi?sourceApplication=uzbtrip&name=${encodeURIComponent(name)}&dev=0`;
+}
+// Web版（アプリが入っていないとき用）
+function amapWebUrl(keyword, city) {
+  const q = new URLSearchParams({ keyword, src: 'uzbtrip' });
   if (city) q.set('city', city);
   return 'https://uri.amap.com/search?' + q.toString();
 }
-// 地図ボタンはすべて高徳地図（Amap）で開く
-function mapButtons(keyword, city, googleQuery, label = '地図') {
-  const amap = `<a class="btn ghost small" href="${esc(amapUrl(keyword, city))}" target="_blank" rel="noopener">📍 ${label}（高徳）</a>`;
-  return amap;
+function mapButtons(keyword, city, _unused, label = '地図') {
+  return `<a class="btn ghost small" href="${esc(amapAppUrl(keyword, city))}" data-amap>📍 ${label}（高徳アプリ）</a>` +
+    `<a class="btn ghost small" href="${esc(amapWebUrl(keyword, city))}" target="_blank" rel="noopener" style="opacity:.8">Web</a>`;
 }
+// アプリが入っていない等で開かなかったときの案内
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('[data-amap]')) return;
+  let left = false;
+  const mark = () => { left = true; };
+  window.addEventListener('pagehide', mark, { once: true });
+  document.addEventListener('visibilitychange', mark, { once: true });
+  setTimeout(() => {
+    if (!left && document.visibilityState === 'visible') toast('開かないときは高徳地図アプリを入れるか「Web」で');
+  }, 2500);
+});
 
 /* ---------- 宿 ---------- */
 function nightsLabel(h) { return h.nights.map((n) => `<span class="pill gold">${md(n)}(${dow(n)})泊</span>`).join(''); }
