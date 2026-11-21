@@ -594,7 +594,7 @@ const SIGHTS = [
 
 /* ===================================================================== */
 
-const APP_VERSION = 'v5';
+const APP_VERSION = 'v6';
 const LS_PREFIX = 'uzbtrip:';
 function lsGet(key, fallback) {
   try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
@@ -988,7 +988,13 @@ if ('serviceWorker' in navigator) {
     if (hadController && !reloaded) { reloaded = true; location.reload(); }
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').then(() => setTimeout(precachePhotos, 1500)).catch(() => {});
+    navigator.serviceWorker.register('./sw.js').then((reg) => {
+      setTimeout(precachePhotos, 1500);
+      // アプリに戻ってきたときも新しい版がないか確認（あれば自動で切り替わって再読み込み）
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
+    }).catch(() => {});
   });
 }
 </script>
