@@ -1,6 +1,6 @@
 // オフライン対応：電波があれば最新版を取得、なければ端末に保存した版を表示する
 // index.html を更新したら CACHE の番号を上げてください
-const CACHE = 'uzbekistan-trip-v5';
+const CACHE = 'uzbekistan-trip-v6';
 // 見どころの写真（Wikimedia Commons）は別のキャッシュに保存（バージョンを上げても消さない）
 const PHOTO_CACHE = 'uzbekistan-photos';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
