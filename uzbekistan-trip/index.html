@@ -345,9 +345,10 @@ const HOTELS = [
     nameLocal: '',
     city: 'タシケント（チランザール地区）', amapCity: 'Tashkent',
     nights: ['2026-12-28', '2027-01-01'],
-    address: '',          // 住所を記入
-    addressLocal: '',     // 現地語の住所を記入
-    notes: ['チランザール地区'],
+    // 住所：ウズベク語ラテン表記（address）とロシア語（addressLocal・運転手向けに大きく表示）
+    address: "Toxtagul ko'chasi 30A, Chilonzor tumani, Toshkent",
+    addressLocal: 'Ташкент, Чиланзарский р-н, ул. Тохтагул, 30А',
+    notes: ['チランザール地区', '地下鉄チランザール駅のすぐ近く'],
   },
   {
     id: 'munis',
@@ -356,9 +357,9 @@ const HOTELS = [
     nameLocal: '',
     city: 'ブハラ', amapCity: 'Bukhara',
     nights: ['2026-12-29'],
-    address: '',
-    addressLocal: '',
-    notes: [],
+    address: "Bahouddin Naqshband ko'chasi 98, Buxoro",
+    addressLocal: 'Бухара, ул. Бахауддина Накшбанда, 98',
+    notes: ['ラビハウズのすぐそば（ナディール・ディヴァンベギ・メドレセの向かい）'],
   },
   {
     id: 'movenpick',
@@ -367,9 +368,9 @@ const HOTELS = [
     nameLocal: '',
     city: 'サマルカンド', amapCity: 'Samarkand',
     nights: ['2026-12-30', '2026-12-31'],
-    address: '',
-    addressLocal: '',
-    notes: ['2連泊'],
+    address: "Shohruh Mirzo ko'chasi 53, Samarqand",
+    addressLocal: 'Самарканд, ул. Шохрух Мирзо, 53',
+    notes: ['2連泊', '電話 +998 55 703 08 08'],
   },
 ];
 
@@ -482,7 +483,7 @@ const MOVE_INFO = [
 const TODOS = [
   { id: 'refund-710', text: '12/29の列車（710ФА）を払い戻す', note: 'シルクアビアの発券確認後' },
   { id: 'train-0101', text: '1/1 サマルカンド → タシケントの列車を取る', note: '未手配' },
-  { id: 'hotel-addr', text: '宿の住所（現地語表記）を入れる', note: 'index.html の HOTELS を書き換え' },
+  { id: 'hotel-addr', text: '宿の住所を予約確認メールと照らし合わせる', note: 'アプリには調べた住所を記入済み' },
   { id: 'bag-10kg', text: 'ブハラ便に合わせて荷物を10kg以内に収める', note: '預け10kg＋機内5kg' },
   { id: 'ponyai', text: 'Pony.aiアプリのログインを確認する', note: '12/27夜 上海で使う' },
   { id: 'sum', text: 'スムへの両替方法を決める' },
@@ -579,7 +580,7 @@ const SIGHTS = [
 
 /* ===================================================================== */
 
-const APP_VERSION = 'v9';
+const APP_VERSION = 'v10';
 const LS_PREFIX = 'uzbtrip:';
 function lsGet(key, fallback) {
   try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
