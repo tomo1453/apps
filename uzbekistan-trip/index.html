@@ -250,7 +250,7 @@ h2.sec:first-child { margin-top: 4px; }
 .sight-tip::before { content: "💡 "; }
 .sight-foot { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .sight-foot .pill { font-size: 11px; }
-.sight-foot a { margin-left: auto; }
+.sight-foot { justify-content: flex-end; }
 .photo-note { font-size: 11.5px; color: var(--sub); text-align: center; margin: 14px 8px 0; }
 
 /* 下部タブ */
@@ -347,7 +347,7 @@ const HOTELS = [
     name: '上海盎格ホテル',
     nameEn: 'Autoongo Hotel',
     nameLocal: '',
-    city: '上海',
+    city: '上海', amapCity: '上海', amapKeyword: '龙阳路2000号',
     nights: ['2026-12-27'],
     address: '上海市 龍陽路2000号',
     addressLocal: '上海市龙阳路2000号',
@@ -358,7 +358,7 @@ const HOTELS = [
     name: 'マルハバ ホテル＆スパ',
     nameEn: 'Marhaba Hotel & Spa',
     nameLocal: '',
-    city: 'タシケント（チランザール地区）',
+    city: 'タシケント（チランザール地区）', amapCity: 'Tashkent',
     nights: ['2026-12-28', '2027-01-01'],
     address: '',          // 住所を記入
     addressLocal: '',     // 現地語の住所を記入
@@ -369,7 +369,7 @@ const HOTELS = [
     name: 'ムニス ブティック ホテル',
     nameEn: 'Munis Boutique Hotel',
     nameLocal: '',
-    city: 'ブハラ',
+    city: 'ブハラ', amapCity: 'Bukhara',
     nights: ['2026-12-29'],
     address: '',
     addressLocal: '',
@@ -380,7 +380,7 @@ const HOTELS = [
     name: 'モーベンピック サマルカンド',
     nameEn: 'Mövenpick Samarkand',
     nameLocal: '',
-    city: 'サマルカンド',
+    city: 'サマルカンド', amapCity: 'Samarkand',
     nights: ['2026-12-30', '2026-12-31'],
     address: '',
     addressLocal: '',
@@ -507,19 +507,19 @@ const TODOS = [
 // 見どころ（都市は旅程順。photo は Wikimedia Commons の写真URL、credit は撮影者／ライセンス）
 const SIGHTS = [
   {
-    city: '上海', cityEn: 'Shanghai', when: '12/27(日) 夜', icon: '🌃',
+    city: '上海', cityEn: 'Shanghai', amapCity: '上海', when: '12/27(日) 夜', icon: '🌃',
     tip: '夜だけの滞在。地下鉄2号線で 龍陽路 → 陸家嘴 → 南京東路 と移動すると夜景をまとめて見られます。',
     spots: [
-      { id: 'bund', name: '外灘（バンド）', en: 'The Bund / 外滩', tag: '夜景', icon: '🌉',
+      { id: 'bund', name: '外灘（バンド）', en: 'The Bund / 外滩', amap: '外滩', tag: '夜景', icon: '🌉',
         desc: '黄浦江沿いに租界時代の重厚な洋館が並ぶ遊歩道。対岸の浦東の超高層ビル群を正面に望む、上海でいちばんの夜景スポット。',
         tip: '地下鉄2・10号線「南京東路」駅から歩いて約10分。', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/The_Bund%2C_Shanghai_at_night.jpg/960px-The_Bund%2C_Shanghai_at_night.jpg', credit: "Lloyd Tudor / CC BY-SA 4.0", source: 'https://commons.wikimedia.org/wiki/File:The_Bund,_Shanghai_at_night.jpg' },
-      { id: 'lujiazui', name: '陸家嘴（浦東）の摩天楼', en: 'Lujiazui / 陆家嘴', tag: '夜景', icon: '🏙️',
+      { id: 'lujiazui', name: '陸家嘴（浦東）の摩天楼', en: 'Lujiazui / 陆家嘴', amap: '陆家嘴', tag: '夜景', icon: '🏙️',
         desc: '東方明珠塔や上海タワーが立つ金融街。ビルの足元から見上げる迫力と、歩道橋（環状の空中歩廊）からの眺めが楽しい。',
         tip: '地下鉄2号線「陸家嘴」駅。龍陽路から乗り換えなしで行けます。', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Lujiazui_skyline_by_night_from_Bund%2C_fully_illuminated.jpg/960px-Lujiazui_skyline_by_night_from_Bund%2C_fully_illuminated.jpg', credit: "Daniel Case / CC BY-SA 3.0", source: 'https://commons.wikimedia.org/wiki/File:Lujiazui_skyline_by_night_from_Bund,_fully_illuminated.jpg' },
-      { id: 'nanjingrd', name: '南京東路 歩行者天国', en: 'East Nanjing Road / 南京东路', tag: '街歩き・食事', icon: '🛍️',
+      { id: 'nanjingrd', name: '南京東路 歩行者天国', en: 'East Nanjing Road / 南京东路', amap: '南京东路步行街', tag: '街歩き・食事', icon: '🛍️',
         desc: 'ネオンがきらめく上海随一の繁華街。食事やお土産探しをしながら、そのまま外灘まで歩いて行けます。',
         tip: '人がとても多いのでスマホ・財布に注意。', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/East_Nanjing_Road_at_night%2C_Shanghai.jpg/960px-East_Nanjing_Road_at_night%2C_Shanghai.jpg', credit: "EditQ / CC BY-SA 4.0", source: 'https://commons.wikimedia.org/wiki/File:East_Nanjing_Road_at_night,_Shanghai.jpg' },
-      { id: 'yuyuan', name: '豫園と豫園商城', en: 'Yu Garden / 豫园', tag: '街歩き・食事', icon: '🏮',
+      { id: 'yuyuan', name: '豫園と豫園商城', en: 'Yu Garden / 豫园', amap: '豫园', tag: '街歩き・食事', icon: '🏮',
         desc: '明代の庭園と、その周りに広がる中国風の建物の商店街。夜は建物がライトアップされ、小籠包などの食べ歩きも楽しめます。',
         tip: '庭園の中は夕方で閉まります。夜は周辺の商店街とライトアップを楽しむのがおすすめ。', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Yuyuan_Garden_3.jpg/960px-Yuyuan_Garden_3.jpg', credit: "kallerna / CC BY-SA 4.0", source: 'https://commons.wikimedia.org/wiki/File:Yuyuan_Garden_3.jpg' },
     ],
@@ -564,7 +564,7 @@ const SIGHTS = [
       { id: 'siyob', name: 'シヨブ・バザール', en: 'Siyob Bazaar', tag: '現地の生活', icon: '🥖',
         desc: '地元の人でにぎわう大きな市場。名物のサマルカンド・ノン（丸いパン）、ドライフルーツ、ナッツ、スパイスなどが山積み。',
         tip: '試食をすすめられることも多い。小額のスム札があると買い物しやすい。', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Siyob_Bazaar_in_Samarkand_5.jpg/960px-Siyob_Bazaar_in_Samarkand_5.jpg', credit: "Adam Harangozó / CC BY-SA 4.0", source: 'https://commons.wikimedia.org/wiki/File:Siyob_Bazaar_in_Samarkand_5.jpg' },
-      { id: 'supermarket', name: 'スーパーマーケット', en: 'Korzinka など', tag: '現地の生活', icon: '🛒',
+      { id: 'supermarket', name: 'スーパーマーケット', en: 'Korzinka など', amap: 'Korzinka', tag: '現地の生活', icon: '🛒',
         desc: 'ウズベキスタンの大手チェーン「Korzinka（コルジンカ）」などのスーパーで、普段の食卓や物価をのぞいてみる。お菓子やお茶はお土産にも。',
         tip: 'レジ袋は有料のことが多いのでエコバッグがあると便利。' },
       { id: 'ulugbek', name: 'ウルグ・ベク天文台跡', en: 'Ulugh Beg Observatory', tag: '歴史', icon: '🔭',
@@ -733,13 +733,28 @@ function renderMoves() {
   v.innerHTML = html;
 }
 
+/* ---------- 地図（高徳地図 Amap） ---------- */
+// uri.amap.com の検索URL。callnative=1 で Amap アプリが入っていればアプリで開く
+function amapUrl(keyword, city) {
+  const q = new URLSearchParams({ keyword, callnative: '1', src: 'uzbtrip' });
+  if (city) q.set('city', city);
+  return 'https://uri.amap.com/search?' + q.toString();
+}
+function googleUrl(query) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query); }
+// 中国国内は Amap のみ、ウズベキスタンは Amap に加えて Google マップも（Amap は海外の情報が少ないため）
+function mapButtons(keyword, city, googleQuery, label = '地図') {
+  const amap = `<a class="btn ghost small" href="${esc(amapUrl(keyword, city))}" target="_blank" rel="noopener">📍 ${label}（高徳）</a>`;
+  const g = city === '上海' ? '' : `<a class="btn ghost small" href="${esc(googleUrl(googleQuery))}" target="_blank" rel="noopener">Google</a>`;
+  return amap + g;
+}
+
 /* ---------- 宿 ---------- */
 function nightsLabel(h) { return h.nights.map((n) => `<span class="pill gold">${md(n)}(${dow(n)})泊</span>`).join(''); }
 function renderHotels() {
   const v = $('#view-hotels');
   v.innerHTML = HOTELS.map((h) => {
     const addr = h.addressLocal || h.address;
-    const mapQ = encodeURIComponent(h.address || h.addressLocal ? `${h.nameEn} ${h.addressLocal || h.address}` : `${h.nameEn} ${h.city}`);
+    const gq = h.address || h.addressLocal ? `${h.nameEn} ${h.addressLocal || h.address}` : `${h.nameEn} ${h.amapCity || ''}`;
     return `
     <div class="card hotel">
       <div class="hotel-dates">${nightsLabel(h)}<span class="pill">${esc(h.city)}</span></div>
@@ -750,7 +765,8 @@ function renderHotels() {
       ${h.notes.length ? `<ul class="hotel-notes">${h.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>` : ''}
       <div class="btn-row">
         <button class="btn gold" type="button" data-driver="${esc(h.id)}">🚕 運転手に見せる</button>
-        <a class="btn ghost small" href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener">地図</a>
+      </div>
+      <div class="btn-row" style="margin-top:8px">${mapButtons(h.amapKeyword || h.addressLocal || h.nameEn, h.amapCity, gq)}
       </div>
     </div>`;
   }).join('');
@@ -767,7 +783,7 @@ function renderSights() {
     <div class="cd"><span class="pill gold">滞在 ${esc(c.when)}</span></div>${c.tip ? `<div class="ct">${esc(c.tip)}</div>` : ''}</div>`;
   const cards = c.spots.map((s) => {
     const on = lsGet('want:' + s.id, '0') === '1';
-    const mapQ = encodeURIComponent(`${s.en.split('/')[0].trim()} ${c.cityEn}`);
+    const enName = s.en.split('/')[0].trim();
     return `<div class="card">
       <div class="sight-photo">${s.icon || '📍'}
         ${s.photo ? `<img src="${esc(s.photo)}" alt="${esc(s.name)}" loading="lazy" crossorigin="anonymous" onerror="this.remove()">
@@ -779,7 +795,7 @@ function renderSights() {
           <button type="button" class="star ${on ? 'on' : ''}" data-want="${esc(s.id)}">${on ? '★ 行きたい' : '☆ 行きたい'}</button></div>
         <div class="sight-desc">${esc(s.desc)}</div>
         ${s.tip ? `<div class="sight-tip">${esc(s.tip)}</div>` : ''}
-        <div class="sight-foot"><a class="btn ghost small" href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener">📍 地図</a></div>
+        <div class="sight-foot">${mapButtons(s.amap || enName, c.amapCity || c.cityEn, `${enName} ${c.cityEn}`)}</div>
       </div>
     </div>`;
   }).join('');
