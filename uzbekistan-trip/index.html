@@ -594,7 +594,7 @@ const SIGHTS = [
 
 /* ===================================================================== */
 
-const APP_VERSION = 'v7';
+const APP_VERSION = 'v8';
 const LS_PREFIX = 'uzbtrip:';
 function lsGet(key, fallback) {
   try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
@@ -740,15 +740,8 @@ function amapAppUrl(keyword, city) {
   const name = city && !keyword.includes(city) ? `${city} ${keyword}` : keyword;
   return `iosamap://poi?sourceApplication=uzbtrip&name=${encodeURIComponent(name)}&dev=0`;
 }
-// Web版（アプリが入っていないとき用）
-function amapWebUrl(keyword, city) {
-  const q = new URLSearchParams({ keyword, src: 'uzbtrip' });
-  if (city) q.set('city', city);
-  return 'https://uri.amap.com/search?' + q.toString();
-}
 function mapButtons(keyword, city, _unused, label = '地図') {
-  return `<a class="btn ghost small" href="${esc(amapAppUrl(keyword, city))}" data-amap>📍 ${label}（高徳アプリ）</a>` +
-    `<a class="btn ghost small" href="${esc(amapWebUrl(keyword, city))}" target="_blank" rel="noopener" style="opacity:.8">Web</a>`;
+  return `<a class="btn ghost small" href="${esc(amapAppUrl(keyword, city))}" data-amap>📍 ${label}（高徳アプリ）</a>`;
 }
 // アプリが入っていない等で開かなかったときの案内
 document.addEventListener('click', (e) => {
@@ -758,7 +751,7 @@ document.addEventListener('click', (e) => {
   window.addEventListener('pagehide', mark, { once: true });
   document.addEventListener('visibilitychange', mark, { once: true });
   setTimeout(() => {
-    if (!left && document.visibilityState === 'visible') toast('開かないときは高徳地図アプリを入れるか「Web」で');
+    if (!left && document.visibilityState === 'visible') toast('開かないときは高徳地図アプリを入れてください');
   }, 2500);
 });
 
