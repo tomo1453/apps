@@ -1,6 +1,6 @@
-// オフライン対応：キャッシュを先に返し（電波なしでもすぐ開く）、裏で最新版に更新する
+// オフライン対応：電波があれば最新版を取得、なければ端末に保存した版を表示する
 // index.html を更新したら CACHE の番号を上げてください
-const CACHE = 'uzbekistan-trip-v4';
+const CACHE = 'uzbekistan-trip-v5';
 // 見どころの写真（Wikimedia Commons）は別のキャッシュに保存（バージョンを上げても消さない）
 const PHOTO_CACHE = 'uzbekistan-photos';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
@@ -42,21 +42,22 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== location.origin) return;
   if (!url.pathname.includes('/uzbekistan-trip/')) return;
 
+  // アプリ本体：電波があれば最新版（4秒で応答がなければ保存分）、なければ保存分
   e.respondWith(
     caches.open(CACHE).then(async (cache) => {
-      const cached = await cache.match(e.request, { ignoreSearch: true });
-      const network = fetch(e.request)
+      const network = fetch(e.request, { cache: 'no-cache' })
         .then((res) => {
           if (res && res.ok) cache.put(e.request, res.clone());
           return res;
         })
         .catch(() => null);
-      if (cached) {
-        e.waitUntil(network);
-        return cached;
-      }
-      const res = await network;
-      return res || (await cache.match('./index.html')) || new Response('オフラインです', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+      const timeout = new Promise((r) => setTimeout(() => r(null), 4000));
+      const res = await Promise.race([network, timeout]);
+      if (res) return res;
+      const cached = await cache.match(e.request, { ignoreSearch: true });
+      if (cached) { e.waitUntil(network); return cached; }
+      return (await network) || (await cache.match('./index.html')) ||
+        new Response('オフラインです', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     })
   );
 });

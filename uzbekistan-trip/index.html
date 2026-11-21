@@ -594,6 +594,7 @@ const SIGHTS = [
 
 /* ===================================================================== */
 
+const APP_VERSION = 'v5';
 const LS_PREFIX = 'uzbtrip:';
 function lsGet(key, fallback) {
   try { const v = localStorage.getItem(LS_PREFIX + key); return v === null ? fallback : v; }
@@ -690,7 +691,7 @@ function renderDays() {
         <div class="day-body"><ul class="timeline">${items}</ul>${stay}</div>
       </div>`;
   }).join('');
-  html += '<div class="foot">時刻はすべて現地時間（日本UTC+9／上海UTC+8／タシケントUTC+5）</div>';
+  html += '<div class="foot">時刻はすべて現地時間（日本UTC+9／上海UTC+8／タシケントUTC+5）<br>アプリ版 ' + APP_VERSION + '</div>';
   v.innerHTML = html;
 }
 $('#view-days').addEventListener('click', (e) => {
@@ -740,12 +741,10 @@ function amapUrl(keyword, city) {
   if (city) q.set('city', city);
   return 'https://uri.amap.com/search?' + q.toString();
 }
-function googleUrl(query) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query); }
-// 中国国内は Amap のみ、ウズベキスタンは Amap に加えて Google マップも（Amap は海外の情報が少ないため）
+// 地図ボタンはすべて高徳地図（Amap）で開く
 function mapButtons(keyword, city, googleQuery, label = '地図') {
   const amap = `<a class="btn ghost small" href="${esc(amapUrl(keyword, city))}" target="_blank" rel="noopener">📍 ${label}（高徳）</a>`;
-  const g = city === '上海' ? '' : `<a class="btn ghost small" href="${esc(googleUrl(googleQuery))}" target="_blank" rel="noopener">Google</a>`;
-  return amap + g;
+  return amap;
 }
 
 /* ---------- 宿 ---------- */
@@ -982,6 +981,12 @@ document.addEventListener('visibilitychange', () => {
 
 // オフライン対応
 if ('serviceWorker' in navigator) {
+  // 新しい版の Service Worker に切り替わったら一度だけ再読み込みして最新の画面にする
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController && !reloaded) { reloaded = true; location.reload(); }
+  });
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').then(() => setTimeout(precachePhotos, 1500)).catch(() => {});
   });
